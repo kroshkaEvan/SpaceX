@@ -9,21 +9,37 @@
 /* Begin PBXBuildFile section */
 		BC84B5D728BD169900D877CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B5D628BD169900D877CC /* AppDelegate.swift */; };
 		BC84B5D928BD169900D877CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B5D828BD169900D877CC /* SceneDelegate.swift */; };
-		BC84B5DB28BD169900D877CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B5DA28BD169900D877CC /* ViewController.swift */; };
+		BC84B5DB28BD169900D877CC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B5DA28BD169900D877CC /* MainViewController.swift */; };
 		BC84B5E028BD16A000D877CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC84B5DF28BD16A000D877CC /* Assets.xcassets */; };
 		BC84B5E328BD16A000D877CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC84B5E128BD16A000D877CC /* LaunchScreen.storyboard */; };
 		BC84B5F128BD179400D877CC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BC84B5F028BD179400D877CC /* Alamofire */; };
 		BC84B5F428BD188500D877CC /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BC84B5F328BD188500D877CC /* SnapKit */; };
+		BC84B5F728BD3F5B00D877CC /* Spaceship.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B5F628BD3F5B00D877CC /* Spaceship.swift */; };
+		BC84B5FA28BD40E200D877CC /* Diameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B5F928BD40E200D877CC /* Diameter.swift */; };
+		BC84B5FC28BD40FA00D877CC /* Engines.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B5FB28BD40FA00D877CC /* Engines.swift */; };
+		BC84B5FE28BD411600D877CC /* ISP.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B5FD28BD411600D877CC /* ISP.swift */; };
+		BC84B60028BD412B00D877CC /* Thrust.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B5FF28BD412B00D877CC /* Thrust.swift */; };
+		BC84B60228BD414600D877CC /* Stages.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B60128BD414600D877CC /* Stages.swift */; };
+		BC84B60428BD416C00D877CC /* LandingLegs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B60328BD416C00D877CC /* LandingLegs.swift */; };
+		BC84B60628BD418700D877CC /* Mass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B60528BD418700D877CC /* Mass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BC84B5D328BD169800D877CC /* SpaceX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC84B5D628BD169900D877CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC84B5D828BD169900D877CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BC84B5DA28BD169900D877CC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BC84B5DA28BD169900D877CC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BC84B5DF28BD16A000D877CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC84B5E228BD16A000D877CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC84B5E428BD16A000D877CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC84B5F628BD3F5B00D877CC /* Spaceship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spaceship.swift; sourceTree = "<group>"; };
+		BC84B5F928BD40E200D877CC /* Diameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diameter.swift; sourceTree = "<group>"; };
+		BC84B5FB28BD40FA00D877CC /* Engines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engines.swift; sourceTree = "<group>"; };
+		BC84B5FD28BD411600D877CC /* ISP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISP.swift; sourceTree = "<group>"; };
+		BC84B5FF28BD412B00D877CC /* Thrust.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thrust.swift; sourceTree = "<group>"; };
+		BC84B60128BD414600D877CC /* Stages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stages.swift; sourceTree = "<group>"; };
+		BC84B60328BD416C00D877CC /* LandingLegs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingLegs.swift; sourceTree = "<group>"; };
+		BC84B60528BD418700D877CC /* Mass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,14 +74,38 @@
 		BC84B5D528BD169800D877CC /* SpaceX */ = {
 			isa = PBXGroup;
 			children = (
+				BC84B5F528BD3F1900D877CC /* Models */,
 				BC84B5D628BD169900D877CC /* AppDelegate.swift */,
 				BC84B5D828BD169900D877CC /* SceneDelegate.swift */,
-				BC84B5DA28BD169900D877CC /* ViewController.swift */,
+				BC84B5DA28BD169900D877CC /* MainViewController.swift */,
 				BC84B5DF28BD16A000D877CC /* Assets.xcassets */,
 				BC84B5E128BD16A000D877CC /* LaunchScreen.storyboard */,
 				BC84B5E428BD16A000D877CC /* Info.plist */,
 			);
 			path = SpaceX;
+			sourceTree = "<group>";
+		};
+		BC84B5F528BD3F1900D877CC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BC84B5F828BD40BD00D877CC /* Spaceship */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BC84B5F828BD40BD00D877CC /* Spaceship */ = {
+			isa = PBXGroup;
+			children = (
+				BC84B5F628BD3F5B00D877CC /* Spaceship.swift */,
+				BC84B5F928BD40E200D877CC /* Diameter.swift */,
+				BC84B5FB28BD40FA00D877CC /* Engines.swift */,
+				BC84B5FD28BD411600D877CC /* ISP.swift */,
+				BC84B5FF28BD412B00D877CC /* Thrust.swift */,
+				BC84B60128BD414600D877CC /* Stages.swift */,
+				BC84B60328BD416C00D877CC /* LandingLegs.swift */,
+				BC84B60528BD418700D877CC /* Mass.swift */,
+			);
+			path = Spaceship;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,8 +186,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC84B5DB28BD169900D877CC /* ViewController.swift in Sources */,
+				BC84B5DB28BD169900D877CC /* MainViewController.swift in Sources */,
+				BC84B60028BD412B00D877CC /* Thrust.swift in Sources */,
 				BC84B5D728BD169900D877CC /* AppDelegate.swift in Sources */,
+				BC84B5FA28BD40E200D877CC /* Diameter.swift in Sources */,
+				BC84B60428BD416C00D877CC /* LandingLegs.swift in Sources */,
+				BC84B5FC28BD40FA00D877CC /* Engines.swift in Sources */,
+				BC84B5FE28BD411600D877CC /* ISP.swift in Sources */,
+				BC84B5F728BD3F5B00D877CC /* Spaceship.swift in Sources */,
+				BC84B60228BD414600D877CC /* Stages.swift in Sources */,
+				BC84B60628BD418700D877CC /* Mass.swift in Sources */,
 				BC84B5D928BD169900D877CC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
