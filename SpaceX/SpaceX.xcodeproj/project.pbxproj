@@ -22,6 +22,8 @@
 		BC84B60228BD414600D877CC /* Stages.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B60128BD414600D877CC /* Stages.swift */; };
 		BC84B60428BD416C00D877CC /* LandingLegs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B60328BD416C00D877CC /* LandingLegs.swift */; };
 		BC84B60628BD418700D877CC /* Mass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B60528BD418700D877CC /* Mass.swift */; };
+		BC84B60928BD434400D877CC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B60828BD434400D877CC /* NetworkManager.swift */; };
+		BC84B60B28BD47CB00D877CC /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B60A28BD47CB00D877CC /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		BC84B60128BD414600D877CC /* Stages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stages.swift; sourceTree = "<group>"; };
 		BC84B60328BD416C00D877CC /* LandingLegs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingLegs.swift; sourceTree = "<group>"; };
 		BC84B60528BD418700D877CC /* Mass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mass.swift; sourceTree = "<group>"; };
+		BC84B60828BD434400D877CC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		BC84B60A28BD47CB00D877CC /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +92,7 @@
 		BC84B5F528BD3F1900D877CC /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				BC84B5F828BD40BD00D877CC /* Spaceship */,
+				BC84B60728BD432500D877CC /* Network */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -106,6 +110,16 @@
 				BC84B60528BD418700D877CC /* Mass.swift */,
 			);
 			path = Spaceship;
+			sourceTree = "<group>";
+		};
+		BC84B60728BD432500D877CC /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				BC84B5F828BD40BD00D877CC /* Spaceship */,
+				BC84B60828BD434400D877CC /* NetworkManager.swift */,
+				BC84B60A28BD47CB00D877CC /* NetworkError.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC84B60928BD434400D877CC /* NetworkManager.swift in Sources */,
 				BC84B5DB28BD169900D877CC /* MainViewController.swift in Sources */,
 				BC84B60028BD412B00D877CC /* Thrust.swift in Sources */,
 				BC84B5D728BD169900D877CC /* AppDelegate.swift in Sources */,
@@ -195,6 +210,7 @@
 				BC84B5FE28BD411600D877CC /* ISP.swift in Sources */,
 				BC84B5F728BD3F5B00D877CC /* Spaceship.swift in Sources */,
 				BC84B60228BD414600D877CC /* Stages.swift in Sources */,
+				BC84B60B28BD47CB00D877CC /* NetworkError.swift in Sources */,
 				BC84B60628BD418700D877CC /* Mass.swift in Sources */,
 				BC84B5D928BD169900D877CC /* SceneDelegate.swift in Sources */,
 			);
