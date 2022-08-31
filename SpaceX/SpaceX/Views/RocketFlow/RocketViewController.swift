@@ -18,8 +18,8 @@ class RocketViewController: UIViewController {
         return view
     }()
     
-    private lazy var descriptionRocketView = RocketView()
-
+    private var descriptionRocketView = RocketView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
@@ -34,13 +34,17 @@ class RocketViewController: UIViewController {
             make.top.equalToSuperview()
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
+    
         }
         
         descriptionRocketView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.top.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.height.greaterThanOrEqualTo(1280)
         }
-        
-        
     }
 
 
