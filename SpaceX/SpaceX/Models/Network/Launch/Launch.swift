@@ -9,8 +9,7 @@ import Foundation
 
 struct Launch: Codable {
     let typeRocket: TypeRocket
-    let name: String
-    let dateLocal: String
+    let name, dateLocal: String
     var success: Bool?
     
     enum CodingKeys: String, CodingKey {

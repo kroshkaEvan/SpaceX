@@ -13,7 +13,7 @@ typealias LaunchCompletionClosure = ((Result<[Launch], NetworkError>) -> Void)
 
 protocol Networkble {
     func getData<T: Decodable>(url: String,
-                               endpoint: URL.EndPoint,
+                               endPoint: URL.EndPoint,
                                completion: @escaping (Result<T, NetworkError>) -> Void)
     func fetchRockets(completion: @escaping RocketCompletionClosure)
     func fetchLaunches(completion: @escaping LaunchCompletionClosure)
@@ -24,9 +24,9 @@ class NetworkManager: Networkble {
     static let shared = NetworkManager()
     
     func getData<T: Decodable>(url: String,
-                               endpoint: URL.EndPoint,
+                               endPoint: URL.EndPoint,
                                completion: @escaping (Result<T, NetworkError>) -> Void) {
-        let url = "\(URL.baseURL)\(endpoint)"
+        let url = "\(URL.baseURL)\(endPoint)"
         AF.sessionConfiguration.timeoutIntervalForRequest = 50
         AF.request(url,
                    method: .get,
@@ -57,13 +57,13 @@ class NetworkManager: Networkble {
     
     func fetchRockets(completion: @escaping RocketCompletionClosure) {
         getData(url: URL.baseURL,
-                endpoint: URL.EndPoint.rockets,
+                endPoint: URL.EndPoint.rockets,
                 completion: completion)
     }
     
     func fetchLaunches(completion: @escaping LaunchCompletionClosure) {
         getData(url: URL.baseURL,
-                endpoint: URL.EndPoint.launches,
+                endPoint: URL.EndPoint.launches,
                 completion: completion)
     }
 }
