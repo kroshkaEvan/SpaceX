@@ -14,7 +14,7 @@
 		BC84B5E328BD16A000D877CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC84B5E128BD16A000D877CC /* LaunchScreen.storyboard */; };
 		BC84B5F128BD179400D877CC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BC84B5F028BD179400D877CC /* Alamofire */; };
 		BC84B5F428BD188500D877CC /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BC84B5F328BD188500D877CC /* SnapKit */; };
-		BC84B5F728BD3F5B00D877CC /* Spaceship.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B5F628BD3F5B00D877CC /* Spaceship.swift */; };
+		BC84B5F728BD3F5B00D877CC /* Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B5F628BD3F5B00D877CC /* Rocket.swift */; };
 		BC84B5FA28BD40E200D877CC /* Diameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B5F928BD40E200D877CC /* Diameter.swift */; };
 		BC84B5FC28BD40FA00D877CC /* Engines.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B5FB28BD40FA00D877CC /* Engines.swift */; };
 		BC84B5FE28BD411600D877CC /* ISP.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B5FD28BD411600D877CC /* ISP.swift */; };
@@ -24,6 +24,8 @@
 		BC84B60628BD418700D877CC /* Mass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B60528BD418700D877CC /* Mass.swift */; };
 		BC84B60928BD434400D877CC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B60828BD434400D877CC /* NetworkManager.swift */; };
 		BC84B60B28BD47CB00D877CC /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B60A28BD47CB00D877CC /* NetworkError.swift */; };
+		BC84B61828BF46F100D877CC /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B61728BF46F100D877CC /* URL.swift */; };
+		BC84B61B28BF477E00D877CC /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B61A28BF477E00D877CC /* Launch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +36,7 @@
 		BC84B5DF28BD16A000D877CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC84B5E228BD16A000D877CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC84B5E428BD16A000D877CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BC84B5F628BD3F5B00D877CC /* Spaceship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spaceship.swift; sourceTree = "<group>"; };
+		BC84B5F628BD3F5B00D877CC /* Rocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rocket.swift; sourceTree = "<group>"; };
 		BC84B5F928BD40E200D877CC /* Diameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diameter.swift; sourceTree = "<group>"; };
 		BC84B5FB28BD40FA00D877CC /* Engines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engines.swift; sourceTree = "<group>"; };
 		BC84B5FD28BD411600D877CC /* ISP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISP.swift; sourceTree = "<group>"; };
@@ -44,6 +46,8 @@
 		BC84B60528BD418700D877CC /* Mass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mass.swift; sourceTree = "<group>"; };
 		BC84B60828BD434400D877CC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		BC84B60A28BD47CB00D877CC /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		BC84B61728BF46F100D877CC /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		BC84B61A28BF477E00D877CC /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,10 +101,10 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		BC84B5F828BD40BD00D877CC /* Spaceship */ = {
+		BC84B5F828BD40BD00D877CC /* Rocket */ = {
 			isa = PBXGroup;
 			children = (
-				BC84B5F628BD3F5B00D877CC /* Spaceship.swift */,
+				BC84B5F628BD3F5B00D877CC /* Rocket.swift */,
 				BC84B5F928BD40E200D877CC /* Diameter.swift */,
 				BC84B5FB28BD40FA00D877CC /* Engines.swift */,
 				BC84B5FD28BD411600D877CC /* ISP.swift */,
@@ -109,17 +113,27 @@
 				BC84B60328BD416C00D877CC /* LandingLegs.swift */,
 				BC84B60528BD418700D877CC /* Mass.swift */,
 			);
-			path = Spaceship;
+			path = Rocket;
 			sourceTree = "<group>";
 		};
 		BC84B60728BD432500D877CC /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				BC84B5F828BD40BD00D877CC /* Spaceship */,
+				BC84B61928BF474A00D877CC /* Launch */,
+				BC84B5F828BD40BD00D877CC /* Rocket */,
 				BC84B60828BD434400D877CC /* NetworkManager.swift */,
 				BC84B60A28BD47CB00D877CC /* NetworkError.swift */,
+				BC84B61728BF46F100D877CC /* URL.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		BC84B61928BF474A00D877CC /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				BC84B61A28BF477E00D877CC /* Launch.swift */,
+			);
+			path = Launch;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,12 +217,14 @@
 				BC84B60928BD434400D877CC /* NetworkManager.swift in Sources */,
 				BC84B5DB28BD169900D877CC /* MainViewController.swift in Sources */,
 				BC84B60028BD412B00D877CC /* Thrust.swift in Sources */,
+				BC84B61828BF46F100D877CC /* URL.swift in Sources */,
 				BC84B5D728BD169900D877CC /* AppDelegate.swift in Sources */,
 				BC84B5FA28BD40E200D877CC /* Diameter.swift in Sources */,
 				BC84B60428BD416C00D877CC /* LandingLegs.swift in Sources */,
+				BC84B61B28BF477E00D877CC /* Launch.swift in Sources */,
 				BC84B5FC28BD40FA00D877CC /* Engines.swift in Sources */,
 				BC84B5FE28BD411600D877CC /* ISP.swift in Sources */,
-				BC84B5F728BD3F5B00D877CC /* Spaceship.swift in Sources */,
+				BC84B5F728BD3F5B00D877CC /* Rocket.swift in Sources */,
 				BC84B60228BD414600D877CC /* Stages.swift in Sources */,
 				BC84B60B28BD47CB00D877CC /* NetworkError.swift in Sources */,
 				BC84B60628BD418700D877CC /* Mass.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  Spaceship.swift
+//  Rocket.swift
 //  SpaceX
 //
 //  Created by Эван Крошкин on 29.08.22.
@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - StarSpaceshipShip
-struct Spaceship: Codable {
+struct Rocket: Codable {
     let height, diameter: Diameter
     let mass: Mass
     let firstStage: FirstStage
@@ -16,29 +16,25 @@ struct Spaceship: Codable {
     let engines: Engines
     let landingLegs: LandingLegs
     let payloadWeights: [PayloadWeight]
-    let flickrImages: [String]
-    let name, type: String
+    let images: [String]
     let active: Bool
-    let stages, boosters, costPerLaunch, successRatePct: Int
-    let firstFlight, country, company: String
-    let wikipedia: String
-    let welcomeDescription, id: String
+    let stages, boosters, costPerLaunch, successRate: Int
+    let firstFlight, country, company, name, type, wikipedia, description, id: String
 
     enum CodingKeys: String, CodingKey {
         case height, diameter, mass
         case firstStage = "first_stage"
         case secondStage = "second_stage"
-        case engines
+        case engines, id
         case landingLegs = "landing_legs"
         case payloadWeights = "payload_weights"
-        case flickrImages = "flickr_images"
+        case images = "flickr_images"
         case name, type, active, stages, boosters
         case costPerLaunch = "cost_per_launch"
-        case successRatePct = "success_rate_pct"
+        case successRate = "success_rate_pct"
         case firstFlight = "first_flight"
         case country, company, wikipedia
-        case welcomeDescription = "description"
-        case id
+        case description = "description"
     }
 }
 

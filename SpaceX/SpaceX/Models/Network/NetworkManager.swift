@@ -8,20 +8,27 @@
 import Foundation
 import Alamofire
 
-protocol Networkble {
-    func fetchRockets(completion: @escaping CompletionClosure)
-}
+typealias RocketCompletionClosure = ((Result<[Rocket], NetworkError>) -> Void)
+typealias LaunchCompletionClosure = ((Result<[Launch], NetworkError>) -> Void)
 
-typealias CompletionClosure = ((Result<[Spaceship], NetworkError>) -> Void)
+protocol Networkble {
+    func getData<T: Decodable>(url: String,
+                               endpoint: URL.EndPoint,
+                               completion: @escaping (Result<T, NetworkError>) -> Void)
+    func fetchRockets(completion: @escaping RocketCompletionClosure)
+    func fetchLaunches(completion: @escaping LaunchCompletionClosure)
+
+}
 
 class NetworkManager: Networkble {
     static let shared = NetworkManager()
-        
-    func fetchRockets(completion: @escaping CompletionClosure) {
-        let baseUrl = "https://api.spacexdata.com/v4/rockets"
-                
+    
+    func getData<T: Decodable>(url: String,
+                               endpoint: URL.EndPoint,
+                               completion: @escaping (Result<T, NetworkError>) -> Void) {
+        let url = "\(URL.baseURL)\(endpoint)"
         AF.sessionConfiguration.timeoutIntervalForRequest = 50
-        AF.request(baseUrl,
+        AF.request(url,
                    method: .get,
                    encoding: URLEncoding.default)
             .validate(statusCode: 200..<299)
@@ -41,11 +48,23 @@ class NetworkManager: Networkble {
                     completion(.failure(.badURL))
                 }
             }
-            .responseDecodable(of: Spaceship.self) { (response) in
-                guard let rockets = response.value
+            .responseDecodable(of: T.self) { (response) in
+                guard let model = response.value
                 else { return completion(.failure(.badJSON)) }
-                completion(.success([rockets]))
+                completion(.success(model))
             }
+    }
+    
+    func fetchRockets(completion: @escaping RocketCompletionClosure) {
+        getData(url: URL.baseURL,
+                endpoint: URL.EndPoint.rockets,
+                completion: completion)
+    }
+    
+    func fetchLaunches(completion: @escaping LaunchCompletionClosure) {
+        getData(url: URL.baseURL,
+                endpoint: URL.EndPoint.launches,
+                completion: completion)
     }
 }
 
