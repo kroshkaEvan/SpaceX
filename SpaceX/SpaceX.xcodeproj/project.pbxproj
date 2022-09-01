@@ -28,6 +28,7 @@
 		BC84B61B28BF477E00D877CC /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B61A28BF477E00D877CC /* Launch.swift */; };
 		BC84B62328BF5B7A00D877CC /* RocketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B62228BF5B7A00D877CC /* RocketView.swift */; };
 		BC84B62528BF8F7900D877CC /* RocketCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B62428BF8F7800D877CC /* RocketCollectionViewCell.swift */; };
+		BC84B62728C1082B00D877CC /* RocketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B62628C1082B00D877CC /* RocketTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		BC84B61A28BF477E00D877CC /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
 		BC84B62228BF5B7A00D877CC /* RocketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketView.swift; sourceTree = "<group>"; };
 		BC84B62428BF8F7800D877CC /* RocketCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketCollectionViewCell.swift; sourceTree = "<group>"; };
+		BC84B62628C1082B00D877CC /* RocketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				BC84B62428BF8F7800D877CC /* RocketCollectionViewCell.swift */,
+				BC84B62628C1082B00D877CC /* RocketTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				BC84B61B28BF477E00D877CC /* Launch.swift in Sources */,
 				BC84B5FC28BD40FA00D877CC /* Engines.swift in Sources */,
 				BC84B5FE28BD411600D877CC /* ISP.swift in Sources */,
+				BC84B62728C1082B00D877CC /* RocketTableViewCell.swift in Sources */,
 				BC84B5F728BD3F5B00D877CC /* Rocket.swift in Sources */,
 				BC84B60228BD414600D877CC /* Stages.swift in Sources */,
 				BC84B60B28BD47CB00D877CC /* NetworkError.swift in Sources */,

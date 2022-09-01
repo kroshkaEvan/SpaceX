@@ -14,7 +14,6 @@ class RocketView: UIView {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.image = UIImage(named: "SpaceX")
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -30,8 +29,8 @@ class RocketView: UIView {
         label.textAlignment = .left
         label.textColor = .white
         label.text = "rocket name"
-        label.font = .systemFont(ofSize: 24, weight: .bold)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 24,
+                                 weight: .bold)
         return label
     }()
     
@@ -40,7 +39,6 @@ class RocketView: UIView {
         button.setBackgroundImage(UIImage(systemName: "gearshape"),
                                   for: UIControl.State.normal)
         button.tintColor = .white
-        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
@@ -53,7 +51,7 @@ class RocketView: UIView {
         return layout
     }()
     
-    lazy var collectionView: UICollectionView = {
+    lazy var rocketCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero,
                                               collectionViewLayout: collectionViewLayout)
         collectionView.backgroundColor = .black
@@ -63,6 +61,18 @@ class RocketView: UIView {
         collectionView.register(RocketCollectionViewCell.self,
                                 forCellWithReuseIdentifier: RocketCollectionViewCell.identifier)
         return collectionView
+    }()
+    
+    lazy var rocketTableView: UITableView = {
+        let tableView = UITableView(frame: .zero,
+                                    style: .grouped)
+        tableView.separatorStyle = .none
+        tableView.isScrollEnabled = false
+        tableView.backgroundColor = .black
+        tableView.sectionHeaderHeight = 40
+        tableView.register(RocketTableViewCell.self,
+                           forCellReuseIdentifier: RocketTableViewCell.identifier)
+        return tableView
     }()
     
     // MARK: - Initializers
@@ -77,14 +87,16 @@ class RocketView: UIView {
     }
     
     private func setupRocketViewLayout() {
-        [backgroundImageView, contentView, collectionView].forEach( {addSubview($0)} )
+        [backgroundImageView, contentView,
+         rocketCollectionView, rocketTableView].forEach( {addSubview($0)} )
         [rocketName, settingsButton].forEach( {contentView.addSubview($0)} )
-        contentView.bringSubviewToFront(self)
+//        rocketTableView.bringSubviewToFront(self)
+        
         backgroundImageView.snp.makeConstraints { make in
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
             make.top.equalToSuperview()
-            make.height.equalTo(300)
+            make.height.equalTo(400)
         }
         
         contentView.snp.makeConstraints { make in
@@ -106,11 +118,18 @@ class RocketView: UIView {
             make.width.equalTo(45)
         }
         
-        collectionView.snp.makeConstraints { make in
+        rocketCollectionView.snp.makeConstraints { make in
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
             make.top.equalTo(rocketName.snp.bottom).offset(32)
-            make.height.equalTo(100)
+            make.height.equalTo(96)
+        }
+        
+        rocketTableView.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(32)
+            make.trailing.equalToSuperview().offset(-32)
+            make.top.equalTo(rocketCollectionView.snp.bottom)
+            make.bottom.equalToSuperview()
         }
     }
     

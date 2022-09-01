@@ -11,6 +11,8 @@ import SnapKit
 class RocketCollectionViewCell: UICollectionViewCell {
     static let identifier = "RocketCollectionViewCell"
     
+    // MARK: - Public properties
+    
     lazy var valueLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -45,7 +47,7 @@ class RocketCollectionViewCell: UICollectionViewCell {
                                                     green: 33/255,
                                                     blue: 33/255,
                                                     alpha: 1).cgColor
-        contentView.layer.cornerRadius = 30
+        contentView.layer.cornerRadius = 32
         contentView.layer.masksToBounds = true
         [valueLabel, parameterLabel].forEach( {addSubview($0)} )
         
