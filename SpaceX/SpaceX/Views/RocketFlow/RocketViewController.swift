@@ -23,6 +23,7 @@ class RocketViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
+        setupCollectionAndTableView()
     }
     
     private func setupLayout() {
@@ -46,7 +47,30 @@ class RocketViewController: UIViewController {
             make.height.greaterThanOrEqualTo(1280)
         }
     }
-
-
+    
+    private func setupCollectionAndTableView() {
+        descriptionRocketView.collectionView.dataSource = self
+        descriptionRocketView.collectionView.delegate = self
+    }
 }
 
+extension RocketViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RocketCollectionViewCell.identifier,
+                                                      for: indexPath)
+        if let cell = cell as? RocketCollectionViewCell {
+            cell.valueLabel.text = "3223"
+            cell.parameterLabel.text = "Mass"
+        }
+        return cell
+    }
+}

@@ -44,6 +44,27 @@ class RocketView: UIView {
         return button
     }()
     
+    let collectionViewLayout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: 96,
+                                 height: 96)
+        layout.minimumLineSpacing = 15
+        return layout
+    }()
+    
+    lazy var collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero,
+                                              collectionViewLayout: collectionViewLayout)
+        collectionView.backgroundColor = .black
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 32,
+                                                   bottom: 0, right: 32)
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.register(RocketCollectionViewCell.self,
+                                forCellWithReuseIdentifier: RocketCollectionViewCell.identifier)
+        return collectionView
+    }()
+    
     // MARK: - Initializers
     
     override init(frame: CGRect) {
@@ -56,7 +77,7 @@ class RocketView: UIView {
     }
     
     private func setupRocketViewLayout() {
-        [backgroundImageView, contentView].forEach( {addSubview($0)} )
+        [backgroundImageView, contentView, collectionView].forEach( {addSubview($0)} )
         [rocketName, settingsButton].forEach( {contentView.addSubview($0)} )
         contentView.bringSubviewToFront(self)
         backgroundImageView.snp.makeConstraints { make in
@@ -83,6 +104,13 @@ class RocketView: UIView {
             make.centerY.equalTo(rocketName.snp.centerY)
             make.height.equalTo(45)
             make.width.equalTo(45)
+        }
+        
+        collectionView.snp.makeConstraints { make in
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.top.equalTo(rocketName.snp.bottom).offset(32)
+            make.height.equalTo(100)
         }
     }
     
