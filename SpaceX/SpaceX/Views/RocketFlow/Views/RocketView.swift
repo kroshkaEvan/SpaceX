@@ -75,6 +75,21 @@ class RocketView: UIView {
         return tableView
     }()
     
+    lazy var watchRocketLaunchesButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Посмотреть запуски",
+                        for: .normal)
+        button.backgroundColor = UIColor(red: 33/255,
+                                         green: 33/255,
+                                         blue: 33/255,
+                                         alpha: 1)
+        button.titleLabel?.font = .systemFont(ofSize: 16,
+                                              weight: .semibold)
+        button.tintColor = .white
+        button.layer.cornerRadius = 10
+        return button
+    }()
+    
     // MARK: - Initializers
     
     override init(frame: CGRect) {
@@ -88,7 +103,7 @@ class RocketView: UIView {
     
     private func setupRocketViewLayout() {
         [backgroundImageView, contentView,
-         rocketCollectionView, rocketTableView].forEach( {addSubview($0)} )
+         rocketCollectionView, rocketTableView, watchRocketLaunchesButton].forEach( {addSubview($0)} )
         [rocketName, settingsButton].forEach( {contentView.addSubview($0)} )
 //        rocketTableView.bringSubviewToFront(self)
         
@@ -129,7 +144,14 @@ class RocketView: UIView {
             make.leading.equalToSuperview().offset(32)
             make.trailing.equalToSuperview().offset(-32)
             make.top.equalTo(rocketCollectionView.snp.bottom)
-            make.bottom.equalToSuperview()
+            make.height.equalTo(514)
+        }
+        
+        watchRocketLaunchesButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(32)
+            make.trailing.equalToSuperview().offset(-32)
+            make.top.equalTo(rocketTableView.snp.bottom).offset(30)
+            make.height.equalTo(50)
         }
     }
     

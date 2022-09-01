@@ -26,6 +26,11 @@ class RocketViewController: UIViewController {
         setupCollectionAndTableView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureNavigation()
+    }
+    
     private func setupLayout() {
         view.addSubview(scrollView)
         scrollView.addSubview(descriptionRocketView)
@@ -45,6 +50,12 @@ class RocketViewController: UIViewController {
             make.centerX.equalToSuperview()
             make.height.greaterThanOrEqualTo(1280)
         }
+    }
+    
+    private func configureNavigation() {
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.layoutIfNeeded()
     }
     
     private func setupCollectionAndTableView() {
