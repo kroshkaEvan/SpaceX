@@ -10,18 +10,18 @@ import SnapKit
 
 class RocketView: UIView {
     
-    private lazy var backgroundImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(named: "SpaceX")
-        return imageView
-    }()
-    
     private lazy var contentView: UIView = {
         let view = UIView(frame: .zero)
         view.backgroundColor = .black
         view.layer.cornerRadius = 30
         return view
+    }()
+    
+    lazy var backgroundImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.image = UIImage(named: "SpaceX")
+        return imageView
     }()
     
     lazy var rocketName: UILabel = {
@@ -36,9 +36,11 @@ class RocketView: UIView {
     
     lazy var settingsButton: UIButton = {
         let button = UIButton()
-        button.setBackgroundImage(UIImage(systemName: "gearshape"),
-                                  for: UIControl.State.normal)
-        button.tintColor = .white
+        var configuration = UIButton.Configuration.filled()
+        configuration.image = UIImage(systemName: "gearshape",
+                                      withConfiguration: UIImage.SymbolConfiguration(scale: .large))
+        button.configuration = configuration
+        button.tintColor = .black
         return button
     }()
     
@@ -103,9 +105,9 @@ class RocketView: UIView {
     
     private func setupRocketViewLayout() {
         [backgroundImageView, contentView,
-         rocketCollectionView, rocketTableView, watchRocketLaunchesButton].forEach( {addSubview($0)} )
-        [rocketName, settingsButton].forEach( {contentView.addSubview($0)} )
-//        rocketTableView.bringSubviewToFront(self)
+         rocketName, settingsButton,
+         rocketCollectionView, rocketTableView,
+         watchRocketLaunchesButton].forEach( {addSubview($0)} )
         
         backgroundImageView.snp.makeConstraints { make in
             make.leading.equalToSuperview()
@@ -154,5 +156,4 @@ class RocketView: UIView {
             make.height.equalTo(50)
         }
     }
-    
 }
