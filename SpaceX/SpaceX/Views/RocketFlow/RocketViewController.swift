@@ -80,8 +80,8 @@ extension RocketViewController: UICollectionViewDataSource, UICollectionViewDele
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RocketCollectionViewCell.identifier,
                                                       for: indexPath)
         if let cell = cell as? RocketCollectionViewCell {
-            cell.valueLabel.text = "3223"
-            cell.parameterLabel.text = "Mass"
+            cell.configureCell(parameterText: "Mass",
+                               valueText: "322000")
         }
         return cell
     }
@@ -144,50 +144,53 @@ extension RocketViewController: UITableViewDataSource, UITableViewDelegate {
             case 0:
                 switch indexPath.row {
                 case 0:
-                    cell.valueLabel.text = "test"
-                    cell.parameterLabel.text = "test22"
+                    cell.configureCell(parameterText: "Mass",
+                                       valueText: "322000")
                 case 1:
-                    cell.valueLabel.text = "test"
-                    cell.parameterLabel.text = "test22"
+                    cell.configureCell(parameterText: "Mass",
+                                       valueText: "322000")
                 case 2:
-                    cell.valueLabel.text = "test"
-                    cell.parameterLabel.text = "test22"
+                    cell.configureCell(parameterText: "Mass",
+                                       valueText: "322000")
                 default:
-                    cell.parameterLabel.text = "test22"
+                    cell.configureCell(parameterText: "Mass",
+                                       valueText: "322000")
                 }
                 
             case 1:
                 switch indexPath.row {
                 case 0:
-                    cell.valueLabel.text = "test"
-                    cell.parameterLabel.text = "test22"
+                    cell.configureCell(parameterText: "Mass",
+                                       valueText: "322000")
                 case 1:
-                    cell.valueLabel.text = "test"
-                    cell.parameterLabel.text = "test22"
-                    
+                    cell.configureCell(parameterText: "Mass",
+                                       valueText: "322000")
                 case 2:
-                    cell.valueLabel.text = "test"
-                    cell.parameterLabel.text = "test22"
+                    cell.configureCell(parameterText: "Mass",
+                                       valueText: "322000")
                 default:
-                    cell.valueLabel.text = "test"
+                    cell.configureCell(parameterText: "Mass",
+                                       valueText: "322000")
                 }
                 
             case 2:
                 switch indexPath.row {
                 case 0:
-                    cell.valueLabel.text = "test"
-                    cell.parameterLabel.text = "test22"
+                    cell.configureCell(parameterText: "Mass",
+                                       valueText: "322000")
                 case 1:
-                    cell.valueLabel.text = "test"
-                    cell.parameterLabel.text = "test22"
+                    cell.configureCell(parameterText: "Mass",
+                                       valueText: "322000")
                 case 2:
-                    cell.valueLabel.text = "test"
-                    cell.parameterLabel.text = "test22"
+                    cell.configureCell(parameterText: "Mass",
+                                       valueText: "322000")
                 default:
-                    cell.valueLabel.text = "test"
+                    cell.configureCell(parameterText: "Mass",
+                                       valueText: "322000")
                 }
             default:
-                cell.valueLabel.text = "test"
+                cell.configureCell(parameterText: "Mass",
+                                   valueText: "322000")
             }
         }
         return cell

@@ -13,7 +13,7 @@ class RocketCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Public properties
     
-    lazy var valueLabel: UILabel = {
+    private lazy var valueLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 16)
@@ -21,7 +21,7 @@ class RocketCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var parameterLabel: UILabel = {
+    private lazy var parameterLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 14)
@@ -62,5 +62,11 @@ class RocketCollectionViewCell: UICollectionViewCell {
             make.bottom.equalToSuperview().offset(-24)
             make.height.equalTo(20)
         })
+    }
+    
+    func configureCell(parameterText: String,
+                       valueText: String) {
+        parameterLabel.text = parameterText
+        valueLabel.text = valueText
     }
 }

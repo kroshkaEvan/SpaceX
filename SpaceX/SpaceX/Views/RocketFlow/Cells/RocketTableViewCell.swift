@@ -12,7 +12,7 @@ class RocketTableViewCell: UITableViewCell {
     
     // MARK: - Public properties
     
-    lazy var valueLabel: UILabel = {
+    private lazy var valueLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
         label.font = .systemFont(ofSize: 16)
@@ -20,7 +20,7 @@ class RocketTableViewCell: UITableViewCell {
         return label
     }()
     
-    lazy var parameterLabel: UILabel = {
+    private lazy var parameterLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
         label.font = .systemFont(ofSize: 16)
@@ -61,5 +61,11 @@ class RocketTableViewCell: UITableViewCell {
             make.trailing.equalToSuperview()
             make.height.equalTo(24)
         }
+    }
+    
+    func configureCell(parameterText: String,
+                       valueText: String) {
+        parameterLabel.text = parameterText
+        valueLabel.text = valueText
     }
 }

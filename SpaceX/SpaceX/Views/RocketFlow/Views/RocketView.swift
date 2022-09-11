@@ -44,7 +44,7 @@ class RocketView: UIView {
         return button
     }()
     
-    let collectionViewLayout: UICollectionViewFlowLayout = {
+    private let collectionViewLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: 96,
