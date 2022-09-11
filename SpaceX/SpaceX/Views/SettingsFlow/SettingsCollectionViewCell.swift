@@ -15,10 +15,9 @@ class SettingsTableViewCell: UITableViewCell {
         
     private lazy var parameterLabel: UILabel = {
         let label = UILabel()
-        label.text = "Mass"
         label.textAlignment = .left
         label.font = .systemFont(ofSize: 16)
-        label.textColor = .lightGray
+        label.textColor = .white
         label.backgroundColor = .clear
         return label
     }()

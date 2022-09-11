@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		BC0AB13128CDBBD4008556AE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0AB13028CDBBD4008556AE /* SettingsViewController.swift */; };
 		BC0AB13328CDBE5C008556AE /* SettingsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0AB13228CDBE5B008556AE /* SettingsCollectionViewCell.swift */; };
+		BC0AB13628CDE679008556AE /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0AB13528CDE679008556AE /* LaunchViewController.swift */; };
+		BC0AB13828CDE730008556AE /* LaunchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0AB13728CDE730008556AE /* LaunchCollectionViewCell.swift */; };
 		BC84B5D728BD169900D877CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B5D628BD169900D877CC /* AppDelegate.swift */; };
 		BC84B5D928BD169900D877CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B5D828BD169900D877CC /* SceneDelegate.swift */; };
 		BC84B5DB28BD169900D877CC /* RocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B5DA28BD169900D877CC /* RocketViewController.swift */; };
@@ -36,6 +38,8 @@
 /* Begin PBXFileReference section */
 		BC0AB13028CDBBD4008556AE /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BC0AB13228CDBE5B008556AE /* SettingsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCollectionViewCell.swift; sourceTree = "<group>"; };
+		BC0AB13528CDE679008556AE /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		BC0AB13728CDE730008556AE /* LaunchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCollectionViewCell.swift; sourceTree = "<group>"; };
 		BC84B5D328BD169800D877CC /* SpaceX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC84B5D628BD169900D877CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC84B5D828BD169900D877CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +84,15 @@
 				BC0AB13228CDBE5B008556AE /* SettingsCollectionViewCell.swift */,
 			);
 			path = SettingsFlow;
+			sourceTree = "<group>";
+		};
+		BC0AB13428CDE65D008556AE /* LaunchFlow */ = {
+			isa = PBXGroup;
+			children = (
+				BC0AB13528CDE679008556AE /* LaunchViewController.swift */,
+				BC0AB13728CDE730008556AE /* LaunchCollectionViewCell.swift */,
+			);
+			path = LaunchFlow;
 			sourceTree = "<group>";
 		};
 		BC84B5CA28BD169800D877CC = {
@@ -156,6 +169,7 @@
 		BC84B61C28BF4E4500D877CC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BC0AB13428CDE65D008556AE /* LaunchFlow */,
 				BC0AB12F28CDB84C008556AE /* SettingsFlow */,
 				BC84B61D28BF4E4E00D877CC /* RocketFlow */,
 			);
@@ -302,8 +316,10 @@
 				BC84B5F728BD3F5B00D877CC /* Rocket.swift in Sources */,
 				BC84B60228BD414600D877CC /* Stages.swift in Sources */,
 				BC84B60B28BD47CB00D877CC /* NetworkError.swift in Sources */,
+				BC0AB13828CDE730008556AE /* LaunchCollectionViewCell.swift in Sources */,
 				BC84B60628BD418700D877CC /* Mass.swift in Sources */,
 				BC84B62328BF5B7A00D877CC /* RocketView.swift in Sources */,
+				BC0AB13628CDE679008556AE /* LaunchViewController.swift in Sources */,
 				BC84B5D928BD169900D877CC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

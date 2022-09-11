@@ -25,8 +25,7 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         setupLayout()
         setupNavigationController()
-        settingsTableView.delegate = self
-        settingsTableView.dataSource = self
+        setupTableView()
     }
     
     private func setupNavigationController() {
@@ -38,12 +37,18 @@ class SettingsViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = closeButton
     }
     
+    
+    private func setupTableView() {
+        settingsTableView.delegate = self
+        settingsTableView.dataSource = self
+    }
+    
     private func setupLayout() {
         view.addSubview(settingsTableView)
         
         settingsTableView.snp.makeConstraints { make in
             make.leading.equalToSuperview()
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().offset(112)
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
         }
