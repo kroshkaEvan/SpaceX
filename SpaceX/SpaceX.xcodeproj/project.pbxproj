@@ -12,7 +12,6 @@
 		BC0AB13628CDE679008556AE /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0AB13528CDE679008556AE /* LaunchViewController.swift */; };
 		BC0AB13828CDE730008556AE /* LaunchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0AB13728CDE730008556AE /* LaunchCollectionViewCell.swift */; };
 		BC84B5D728BD169900D877CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B5D628BD169900D877CC /* AppDelegate.swift */; };
-		BC84B5D928BD169900D877CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B5D828BD169900D877CC /* SceneDelegate.swift */; };
 		BC84B5DB28BD169900D877CC /* RocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B5DA28BD169900D877CC /* RocketViewController.swift */; };
 		BC84B5E028BD16A000D877CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC84B5DF28BD16A000D877CC /* Assets.xcassets */; };
 		BC84B5E328BD16A000D877CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC84B5E128BD16A000D877CC /* LaunchScreen.storyboard */; };
@@ -34,6 +33,10 @@
 		BC84B62528BF8F7900D877CC /* RocketCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B62428BF8F7800D877CC /* RocketCollectionViewCell.swift */; };
 		BC84B62728C1082B00D877CC /* RocketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B62628C1082B00D877CC /* RocketTableViewCell.swift */; };
 		BCDC2E8128CF3C4900309078 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDC2E8028CF3C4900309078 /* MainPageViewController.swift */; };
+		BCDC2E8328CF3E9800309078 /* RocketPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDC2E8228CF3E9800309078 /* RocketPresenter.swift */; };
+		BCDC2E8628CF3FB800309078 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDC2E8528CF3FB800309078 /* Router.swift */; };
+		BCDC2E8828CF400600309078 /* AssemblyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDC2E8728CF400600309078 /* AssemblyBuilder.swift */; };
+		BCDC2E8A28CF482500309078 /* MainPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDC2E8928CF482500309078 /* MainPagePresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,7 +46,6 @@
 		BC0AB13728CDE730008556AE /* LaunchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCollectionViewCell.swift; sourceTree = "<group>"; };
 		BC84B5D328BD169800D877CC /* SpaceX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC84B5D628BD169900D877CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BC84B5D828BD169900D877CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BC84B5DA28BD169900D877CC /* RocketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketViewController.swift; sourceTree = "<group>"; };
 		BC84B5DF28BD16A000D877CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC84B5E228BD16A000D877CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -64,6 +66,10 @@
 		BC84B62428BF8F7800D877CC /* RocketCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketCollectionViewCell.swift; sourceTree = "<group>"; };
 		BC84B62628C1082B00D877CC /* RocketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketTableViewCell.swift; sourceTree = "<group>"; };
 		BCDC2E8028CF3C4900309078 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
+		BCDC2E8228CF3E9800309078 /* RocketPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketPresenter.swift; sourceTree = "<group>"; };
+		BCDC2E8528CF3FB800309078 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		BCDC2E8728CF400600309078 /* AssemblyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyBuilder.swift; sourceTree = "<group>"; };
+		BCDC2E8928CF482500309078 /* MainPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPagePresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,7 +199,6 @@
 			isa = PBXGroup;
 			children = (
 				BC84B5D628BD169900D877CC /* AppDelegate.swift */,
-				BC84B5D828BD169900D877CC /* SceneDelegate.swift */,
 				BC84B5DF28BD16A000D877CC /* Assets.xcassets */,
 				BC84B5E128BD16A000D877CC /* LaunchScreen.storyboard */,
 			);
@@ -203,6 +208,9 @@
 		BC84B61F28BF4E8000D877CC /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				BCDC2E8428CF3FA200309078 /* Router */,
+				BCDC2E8228CF3E9800309078 /* RocketPresenter.swift */,
+				BCDC2E8928CF482500309078 /* MainPagePresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -230,6 +238,15 @@
 				BCDC2E8028CF3C4900309078 /* MainPageViewController.swift */,
 			);
 			path = MainPage;
+			sourceTree = "<group>";
+		};
+		BCDC2E8428CF3FA200309078 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				BCDC2E8528CF3FB800309078 /* Router.swift */,
+				BCDC2E8728CF400600309078 /* AssemblyBuilder.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,13 +328,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC84B62528BF8F7900D877CC /* RocketCollectionViewCell.swift in Sources */,
+				BCDC2E8828CF400600309078 /* AssemblyBuilder.swift in Sources */,
 				BC84B60928BD434400D877CC /* NetworkManager.swift in Sources */,
+				BCDC2E8628CF3FB800309078 /* Router.swift in Sources */,
 				BC0AB13328CDBE5C008556AE /* SettingsCollectionViewCell.swift in Sources */,
 				BC84B5DB28BD169900D877CC /* RocketViewController.swift in Sources */,
 				BCDC2E8128CF3C4900309078 /* MainPageViewController.swift in Sources */,
 				BC84B60028BD412B00D877CC /* Thrust.swift in Sources */,
 				BC84B61828BF46F100D877CC /* URL.swift in Sources */,
 				BC0AB13128CDBBD4008556AE /* SettingsViewController.swift in Sources */,
+				BCDC2E8328CF3E9800309078 /* RocketPresenter.swift in Sources */,
 				BC84B5D728BD169900D877CC /* AppDelegate.swift in Sources */,
 				BC84B5FA28BD40E200D877CC /* Diameter.swift in Sources */,
 				BC84B60428BD416C00D877CC /* LandingLegs.swift in Sources */,
@@ -328,11 +348,11 @@
 				BC84B5F728BD3F5B00D877CC /* Rocket.swift in Sources */,
 				BC84B60228BD414600D877CC /* Stages.swift in Sources */,
 				BC84B60B28BD47CB00D877CC /* NetworkError.swift in Sources */,
+				BCDC2E8A28CF482500309078 /* MainPagePresenter.swift in Sources */,
 				BC0AB13828CDE730008556AE /* LaunchCollectionViewCell.swift in Sources */,
 				BC84B60628BD418700D877CC /* Mass.swift in Sources */,
 				BC84B62328BF5B7A00D877CC /* RocketView.swift in Sources */,
 				BC0AB13628CDE679008556AE /* LaunchViewController.swift in Sources */,
-				BC84B5D928BD169900D877CC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

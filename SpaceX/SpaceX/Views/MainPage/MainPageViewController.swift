@@ -8,6 +8,10 @@
 import UIKit
 import SnapKit
 
+protocol MainPageViewProtocol: AnyObject {
+  func success(withNumber number: Int)
+}
+
 class MainPageViewController: UIPageViewController {
 
     private lazy var pageControl: UIPageControl = {
@@ -16,6 +20,8 @@ class MainPageViewController: UIPageViewController {
     }()
       
     private lazy var pages: [UIViewController] = []
+    
+    var presenter: MainPagePresenterProtocol?
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +39,12 @@ class MainPageViewController: UIPageViewController {
         pageControl.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+    }
+}
+
+extension MainPageViewController: MainPageViewProtocol {
+    func success(withNumber number: Int) {
+        
     }
 }
 

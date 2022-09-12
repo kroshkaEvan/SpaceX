@@ -8,6 +8,11 @@
 import UIKit
 import SnapKit
 
+protocol RocketViewProtocol: AnyObject {
+    func success()
+    func failure(error: NetworkError)
+}
+
 class RocketViewController: UIViewController {
     
     private lazy var scrollView: UIScrollView = {
@@ -19,6 +24,18 @@ class RocketViewController: UIViewController {
     }()
     
     private var descriptionRocketView = RocketView()
+    
+    var presenter: RocketPresenter?
+    var serialNumber: Int
+      
+    init(serialNumber: Int) {
+        self.serialNumber = serialNumber
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +81,18 @@ class RocketViewController: UIViewController {
         descriptionRocketView.rocketTableView.dataSource = self
         descriptionRocketView.rocketTableView.delegate = self
     }
+}
+
+extension RocketViewController: RocketViewProtocol {
+    func success() {
+        
+    }
+    
+    func failure(error: NetworkError) {
+        
+    }
+    
+
 }
 
 extension RocketViewController: UICollectionViewDataSource, UICollectionViewDelegate {
