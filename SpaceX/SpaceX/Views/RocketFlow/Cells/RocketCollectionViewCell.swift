@@ -29,6 +29,13 @@ class RocketCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [valueLabel, parameterLabel])
+        stackView.axis = .vertical
+        stackView.spacing = 1
+        return stackView
+    }()
+    
     // MARK: - Initializers
     
     override init(frame: CGRect) {
@@ -49,17 +56,18 @@ class RocketCollectionViewCell: UICollectionViewCell {
                                                     alpha: 1).cgColor
         contentView.layer.cornerRadius = 32
         contentView.layer.masksToBounds = true
-        [valueLabel, parameterLabel].forEach( {addSubview($0)} )
+        [stackView].forEach( {addSubview($0)} )
         
-        valueLabel.snp.makeConstraints({ make in
+        stackView.snp.makeConstraints({ make in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(28)
-            make.height.equalTo(24)
+            make.centerY.equalToSuperview()
         })
         
         parameterLabel.snp.makeConstraints({ make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-24)
+            make.height.equalTo(20)
+        })
+        
+        valueLabel.snp.makeConstraints({ make in
             make.height.equalTo(20)
         })
     }
