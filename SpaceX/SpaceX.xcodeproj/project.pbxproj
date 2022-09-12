@@ -37,6 +37,7 @@
 		BCDC2E8628CF3FB800309078 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDC2E8528CF3FB800309078 /* Router.swift */; };
 		BCDC2E8828CF400600309078 /* AssemblyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDC2E8728CF400600309078 /* AssemblyBuilder.swift */; };
 		BCDC2E8A28CF482500309078 /* MainPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDC2E8928CF482500309078 /* MainPagePresenter.swift */; };
+		BCDC2E9028CFCF8B00309078 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = BCDC2E8F28CFCF8B00309078 /* Nuke */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCDC2E9028CFCF8B00309078 /* Nuke in Frameworks */,
 				BC84B5F128BD179400D877CC /* Alamofire in Frameworks */,
 				BC84B5F428BD188500D877CC /* SnapKit in Frameworks */,
 			);
@@ -268,6 +270,7 @@
 			packageProductDependencies = (
 				BC84B5F028BD179400D877CC /* Alamofire */,
 				BC84B5F328BD188500D877CC /* SnapKit */,
+				BCDC2E8F28CFCF8B00309078 /* Nuke */,
 			);
 			productName = SpaceX;
 			productReference = BC84B5D328BD169800D877CC /* SpaceX.app */;
@@ -300,6 +303,7 @@
 			packageReferences = (
 				BC84B5EF28BD179400D877CC /* XCRemoteSwiftPackageReference "Alamofire" */,
 				BC84B5F228BD188500D877CC /* XCRemoteSwiftPackageReference "SnapKit" */,
+				BCDC2E8E28CFCF8B00309078 /* XCRemoteSwiftPackageReference "Nuke" */,
 			);
 			productRefGroup = BC84B5D428BD169800D877CC /* Products */;
 			projectDirPath = "";
@@ -582,6 +586,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		BCDC2E8E28CFCF8B00309078 /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -594,6 +606,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BC84B5F228BD188500D877CC /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		BCDC2E8F28CFCF8B00309078 /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BCDC2E8E28CFCF8B00309078 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

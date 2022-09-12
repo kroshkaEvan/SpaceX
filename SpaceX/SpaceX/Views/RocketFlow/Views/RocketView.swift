@@ -20,7 +20,7 @@ class RocketView: UIView {
     lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(named: "SpaceX")
+//        imageView.image = UIImage(named: "SpaceX")
         return imageView
     }()
     

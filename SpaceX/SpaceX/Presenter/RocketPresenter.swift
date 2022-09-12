@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Nuke
 
 protocol RocketPresenterProtocol: AnyObject {
     init(view: RocketViewProtocol,
@@ -14,6 +15,8 @@ protocol RocketPresenterProtocol: AnyObject {
     
     var rockets: [Rocket]? { get set }
     func fetchRockets()
+    func fetchRocketImage(_ imageView: UIImageView,
+                          with serialNumber: Int)
 }
 
 class RocketPresenter: RocketPresenterProtocol {
@@ -53,5 +56,19 @@ class RocketPresenter: RocketPresenterProtocol {
         }
     }
     
+    func fetchRocketImage(_ imageView: UIImageView,
+                          with serialNumber: Int) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self,
+                  let rocketImageURL = self.rockets?[serialNumber].images.randomElement(),
+                  let url = URL(string: rocketImageURL) else { return }
+            let options = ImageLoadingOptions(
+                placeholder: UIImage(named: "SpaceX")
+            )
+            Nuke.loadImage(with: url,
+                           options: options,
+                           into: imageView)
+        }
+    }
 }
 

@@ -41,7 +41,7 @@ class RocketViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
-        setupCollectionAndTableView()
+        setupView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,7 +76,7 @@ class RocketViewController: UIViewController {
         navigationController?.navigationBar.layoutIfNeeded()
     }
     
-    private func setupCollectionAndTableView() {
+    private func setupView() {
         descriptionRocketView.rocketCollectionView.dataSource = self
         descriptionRocketView.rocketCollectionView.delegate = self
         descriptionRocketView.rocketTableView.dataSource = self
@@ -87,7 +87,10 @@ class RocketViewController: UIViewController {
 extension RocketViewController: RocketViewProtocol {
     func success() {
         DispatchQueue.main.async { [weak self] in
-            self?.descriptionRocketView.rocketName.text = self?.presenter?.self.rockets?[self?.serialNumber ?? 0].name
+            guard let self = self else { return }
+            self.descriptionRocketView.rocketName.text = self.presenter?.self.rockets?[self.serialNumber].name
+            self.presenter?.fetchRocketImage(self.descriptionRocketView.backgroundImageView,
+                                             with: self.serialNumber)
         }
         descriptionRocketView.rocketTableView.reloadData()
     }
