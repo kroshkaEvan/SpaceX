@@ -33,6 +33,7 @@
 		BC84B62328BF5B7A00D877CC /* RocketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B62228BF5B7A00D877CC /* RocketView.swift */; };
 		BC84B62528BF8F7900D877CC /* RocketCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B62428BF8F7800D877CC /* RocketCollectionViewCell.swift */; };
 		BC84B62728C1082B00D877CC /* RocketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B62628C1082B00D877CC /* RocketTableViewCell.swift */; };
+		BCDC2E8128CF3C4900309078 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDC2E8028CF3C4900309078 /* MainPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		BC84B62228BF5B7A00D877CC /* RocketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketView.swift; sourceTree = "<group>"; };
 		BC84B62428BF8F7800D877CC /* RocketCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketCollectionViewCell.swift; sourceTree = "<group>"; };
 		BC84B62628C1082B00D877CC /* RocketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketTableViewCell.swift; sourceTree = "<group>"; };
+		BCDC2E8028CF3C4900309078 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 		BC84B61C28BF4E4500D877CC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BCDC2E7F28CF3C2700309078 /* MainPage */,
 				BC0AB13428CDE65D008556AE /* LaunchFlow */,
 				BC0AB12F28CDB84C008556AE /* SettingsFlow */,
 				BC84B61D28BF4E4E00D877CC /* RocketFlow */,
@@ -219,6 +222,14 @@
 				BC84B62628C1082B00D877CC /* RocketTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		BCDC2E7F28CF3C2700309078 /* MainPage */ = {
+			isa = PBXGroup;
+			children = (
+				BCDC2E8028CF3C4900309078 /* MainPageViewController.swift */,
+			);
+			path = MainPage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,6 +314,7 @@
 				BC84B60928BD434400D877CC /* NetworkManager.swift in Sources */,
 				BC0AB13328CDBE5C008556AE /* SettingsCollectionViewCell.swift in Sources */,
 				BC84B5DB28BD169900D877CC /* RocketViewController.swift in Sources */,
+				BCDC2E8128CF3C4900309078 /* MainPageViewController.swift in Sources */,
 				BC84B60028BD412B00D877CC /* Thrust.swift in Sources */,
 				BC84B61828BF46F100D877CC /* URL.swift in Sources */,
 				BC0AB13128CDBBD4008556AE /* SettingsViewController.swift in Sources */,

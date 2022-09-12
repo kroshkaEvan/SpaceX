@@ -11,7 +11,7 @@ import Alamofire
 typealias RocketCompletionClosure = ((Result<[Rocket], NetworkError>) -> Void)
 typealias LaunchCompletionClosure = ((Result<[Launch], NetworkError>) -> Void)
 
-protocol Networkble {
+protocol NetworkProtocol {
     func getData<T: Decodable>(url: String,
                                endPoint: URL.EndPoint,
                                completion: @escaping (Result<T, NetworkError>) -> Void)
@@ -20,7 +20,7 @@ protocol Networkble {
 
 }
 
-class NetworkManager: Networkble {
+class NetworkManager: NetworkProtocol {
     static let shared = NetworkManager()
     
     func getData<T: Decodable>(url: String,
