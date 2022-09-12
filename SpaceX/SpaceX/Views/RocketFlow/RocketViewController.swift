@@ -25,9 +25,10 @@ class RocketViewController: UIViewController {
     
     private var descriptionRocketView = RocketView()
     
-    var presenter: RocketPresenter?
+    var presenter: RocketPresenterProtocol?
+    let networkManager = NetworkManager()
     var serialNumber: Int
-      
+    
     init(serialNumber: Int) {
         self.serialNumber = serialNumber
         super.init(nibName: nil, bundle: nil)
@@ -85,13 +86,15 @@ class RocketViewController: UIViewController {
 
 extension RocketViewController: RocketViewProtocol {
     func success() {
-        
+        DispatchQueue.main.async { [weak self] in
+            self?.descriptionRocketView.rocketName.text = self?.presenter?.self.rockets?[self?.serialNumber ?? 0].name
+        }
+        descriptionRocketView.rocketTableView.reloadData()
     }
     
     func failure(error: NetworkError) {
-        
+        print(error)
     }
-    
 
 }
 
@@ -108,9 +111,27 @@ extension RocketViewController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RocketCollectionViewCell.identifier,
                                                       for: indexPath)
-        if let cell = cell as? RocketCollectionViewCell {
-            cell.configureCell(parameterText: "Mass",
-                               valueText: "322000")
+        if let cell = cell as? RocketCollectionViewCell,
+           let rocket = self.presenter?.rockets?[self.serialNumber] {
+            DispatchQueue.main.async {
+                switch indexPath.row {
+                case 0:
+                    cell.configureCell(parameterText: "Height, m",
+                                       valueText: "\(rocket.height.meters ?? 0)")
+                case 1:
+                    cell.configureCell(parameterText: "Diameter, m",
+                                       valueText: "\(rocket.diameter.meters ?? 0)")
+                case 2:
+                    cell.configureCell(parameterText: "Mass, kg",
+                                       valueText: "\(rocket.mass.kg)")
+                case 3:
+                    cell.configureCell(parameterText: "Payload, kg",
+                                       valueText: "\(rocket.payloadWeights.first?.kg ?? 0)")
+                default:
+                    cell.configureCell(parameterText: "",
+                                       valueText: "")
+                }
+            }
         }
         return cell
     }
@@ -153,9 +174,9 @@ extension RocketViewController: UITableViewDataSource, UITableViewDelegate {
         case 0:
             label.text = nil
         case 1:
-            label.text = "ПЕРВАЯ СТУПЕНЬ"
+            label.text = "FIRST STAGE"
         case 2:
-            label.text = "ВТОРАЯ СТУПЕНЬ"
+            label.text = "SECOND STAGE"
         default:
             label.text = nil
         }
@@ -166,60 +187,59 @@ extension RocketViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: RocketTableViewCell.identifier,
                                                  for: indexPath)
-        if let cell = cell as? RocketTableViewCell {
-            
-            switch indexPath.section {
-                
-            case 0:
-                switch indexPath.row {
+        if let cell = cell as? RocketTableViewCell,
+           let rocket = self.presenter?.rockets?[self.serialNumber] {
+            DispatchQueue.main.async {
+                switch indexPath.section {
                 case 0:
-                    cell.configureCell(parameterText: "Mass",
-                                       valueText: "322000")
+                    switch indexPath.row {
+                    case 0:
+                        cell.configureCell(parameterText: "First launch",
+                                           valueText: "\(rocket.firstFlight)")
+                    case 1:
+                        cell.configureCell(parameterText: "Country",
+                                           valueText: "\(rocket.country)")
+                    case 2:
+                        cell.configureCell(parameterText: "Coast launch",
+                                           valueText: "\(rocket.costPerLaunch) $")
+                    default:
+                        cell.configureCell(parameterText: "",
+                                                valueText: "")
+                    }
                 case 1:
-                    cell.configureCell(parameterText: "Mass",
-                                       valueText: "322000")
+                    switch indexPath.row {
+                    case 0:
+                        cell.configureCell(parameterText: "Number of engines",
+                                           valueText: "\(rocket.firstStage.engines)")
+                    case 1:
+                        cell.configureCell(parameterText: "Fuel amount",
+                                           valueText: "\(rocket.firstStage.fuelAmountTons) ton")
+                    case 2:
+                        cell.configureCell(parameterText: "Burn time",
+                                           valueText: "\(rocket.firstStage.burnTimeSEC ?? 0) sec")
+                    default:
+                        cell.configureCell(parameterText: "",
+                                           valueText: "")
+                    }
                 case 2:
-                    cell.configureCell(parameterText: "Mass",
-                                       valueText: "322000")
+                    switch indexPath.row {
+                    case 0:
+                        cell.configureCell(parameterText: "Number of engines",
+                                           valueText: "\(rocket.secondStage.engines)")
+                    case 1:
+                        cell.configureCell(parameterText: "Fuel amount",
+                                           valueText: "\(rocket.secondStage.fuelAmountTons) ton")
+                    case 2:
+                        cell.configureCell(parameterText: "Burn time",
+                                           valueText: "\(rocket.secondStage.burnTimeSEC ?? 0) sec")
+                    default:
+                        cell.configureCell(parameterText: "",
+                                           valueText: "")
+                    }
                 default:
-                    cell.configureCell(parameterText: "Mass",
-                                       valueText: "322000")
+                    cell.configureCell(parameterText: "",
+                                       valueText: "")
                 }
-                
-            case 1:
-                switch indexPath.row {
-                case 0:
-                    cell.configureCell(parameterText: "Mass",
-                                       valueText: "322000")
-                case 1:
-                    cell.configureCell(parameterText: "Mass",
-                                       valueText: "322000")
-                case 2:
-                    cell.configureCell(parameterText: "Mass",
-                                       valueText: "322000")
-                default:
-                    cell.configureCell(parameterText: "Mass",
-                                       valueText: "322000")
-                }
-                
-            case 2:
-                switch indexPath.row {
-                case 0:
-                    cell.configureCell(parameterText: "Mass",
-                                       valueText: "322000")
-                case 1:
-                    cell.configureCell(parameterText: "Mass",
-                                       valueText: "322000")
-                case 2:
-                    cell.configureCell(parameterText: "Mass",
-                                       valueText: "322000")
-                default:
-                    cell.configureCell(parameterText: "Mass",
-                                       valueText: "322000")
-                }
-            default:
-                cell.configureCell(parameterText: "Mass",
-                                   valueText: "322000")
             }
         }
         return cell

@@ -27,7 +27,7 @@
 		BC84B60628BD418700D877CC /* Mass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B60528BD418700D877CC /* Mass.swift */; };
 		BC84B60928BD434400D877CC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B60828BD434400D877CC /* NetworkManager.swift */; };
 		BC84B60B28BD47CB00D877CC /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B60A28BD47CB00D877CC /* NetworkError.swift */; };
-		BC84B61828BF46F100D877CC /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B61728BF46F100D877CC /* URL.swift */; };
+		BC84B61828BF46F100D877CC /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B61728BF46F100D877CC /* API.swift */; };
 		BC84B61B28BF477E00D877CC /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B61A28BF477E00D877CC /* Launch.swift */; };
 		BC84B62328BF5B7A00D877CC /* RocketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B62228BF5B7A00D877CC /* RocketView.swift */; };
 		BC84B62528BF8F7900D877CC /* RocketCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B62428BF8F7800D877CC /* RocketCollectionViewCell.swift */; };
@@ -60,7 +60,7 @@
 		BC84B60528BD418700D877CC /* Mass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mass.swift; sourceTree = "<group>"; };
 		BC84B60828BD434400D877CC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		BC84B60A28BD47CB00D877CC /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		BC84B61728BF46F100D877CC /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		BC84B61728BF46F100D877CC /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		BC84B61A28BF477E00D877CC /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
 		BC84B62228BF5B7A00D877CC /* RocketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketView.swift; sourceTree = "<group>"; };
 		BC84B62428BF8F7800D877CC /* RocketCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -161,7 +161,7 @@
 				BC84B5F828BD40BD00D877CC /* Rocket */,
 				BC84B60828BD434400D877CC /* NetworkManager.swift */,
 				BC84B60A28BD47CB00D877CC /* NetworkError.swift */,
-				BC84B61728BF46F100D877CC /* URL.swift */,
+				BC84B61728BF46F100D877CC /* API.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -335,7 +335,7 @@
 				BC84B5DB28BD169900D877CC /* RocketViewController.swift in Sources */,
 				BCDC2E8128CF3C4900309078 /* MainPageViewController.swift in Sources */,
 				BC84B60028BD412B00D877CC /* Thrust.swift in Sources */,
-				BC84B61828BF46F100D877CC /* URL.swift in Sources */,
+				BC84B61828BF46F100D877CC /* API.swift in Sources */,
 				BC0AB13128CDBBD4008556AE /* SettingsViewController.swift in Sources */,
 				BCDC2E8328CF3E9800309078 /* RocketPresenter.swift in Sources */,
 				BC84B5D728BD169900D877CC /* AppDelegate.swift in Sources */,

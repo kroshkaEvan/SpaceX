@@ -12,31 +12,30 @@ typealias RocketCompletionClosure = ((Result<[Rocket], NetworkError>) -> Void)
 typealias LaunchCompletionClosure = ((Result<[Launch], NetworkError>) -> Void)
 
 protocol NetworkProtocol {
-    func getData<T: Decodable>(url: String,
-                               endPoint: URL.EndPoint,
+    func getData<T: Decodable>(baseURL: String,
+                               endPoint: API.EndPoint,
                                completion: @escaping (Result<T, NetworkError>) -> Void)
     func fetchRockets(completion: @escaping RocketCompletionClosure)
     func fetchLaunches(completion: @escaping LaunchCompletionClosure)
-
+    
 }
 
 class NetworkManager: NetworkProtocol {
-    static let shared = NetworkManager()
     
-    func getData<T: Decodable>(url: String,
-                               endPoint: URL.EndPoint,
+    func getData<T: Decodable>(baseURL: String,
+                               endPoint: API.EndPoint,
                                completion: @escaping (Result<T, NetworkError>) -> Void) {
-        let url = "\(URL.baseURL)\(endPoint)"
+        let url = "\(baseURL)\(endPoint)"
         AF.sessionConfiguration.timeoutIntervalForRequest = 50
         AF.request(url,
                    method: .get,
-                   encoding: URLEncoding.default)
+                   encoding: URLEncoding.httpBody)
             .validate(statusCode: 200..<299)
             .validate(contentType: ["application/json"])
             .responseData { (responseData) in
                 guard let response = responseData.response
                 else { return completion(.failure(.serverError)) }
-                
+
                 switch response.statusCode {
                 case 300...399:
                     completion(.failure(.badURL))
@@ -45,7 +44,7 @@ class NetworkManager: NetworkProtocol {
                 case 500...599:
                     completion(.failure(.noInternet))
                 default:
-                    completion(.failure(.badURL))
+                    print("rocket uploaded successfully")
                 }
             }
             .responseDecodable(of: T.self) { (response) in
@@ -54,16 +53,16 @@ class NetworkManager: NetworkProtocol {
                 completion(.success(model))
             }
     }
-    
+
     func fetchRockets(completion: @escaping RocketCompletionClosure) {
-        getData(url: URL.baseURL,
-                endPoint: URL.EndPoint.rockets,
+        getData(baseURL: API.baseURL,
+                endPoint: API.EndPoint.rockets,
                 completion: completion)
     }
-    
+
     func fetchLaunches(completion: @escaping LaunchCompletionClosure) {
-        getData(url: URL.baseURL,
-                endPoint: URL.EndPoint.launches,
+        getData(baseURL: API.baseURL,
+                endPoint: API.EndPoint.launches,
                 completion: completion)
     }
 }

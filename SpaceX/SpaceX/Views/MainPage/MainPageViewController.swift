@@ -13,15 +13,24 @@ protocol MainPageViewProtocol: AnyObject {
 }
 
 class MainPageViewController: UIPageViewController {
+    
+    private lazy var pages: [UIViewController] = []
+    private lazy var assemblyBuilder = AssemblyBuilder()
+
+    var presenter: MainPagePresenterProtocol?
+    var currentPage = 0
 
     private lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
+        pageControl.currentPageIndicatorTintColor = .white
+        pageControl.backgroundColor = .black
+        pageControl.pageIndicatorTintColor = .systemGray
+        pageControl.isUserInteractionEnabled = false
+        pageControl.addTarget(self,
+                              action: #selector(swipePageControl),
+                              for: .valueChanged)
         return pageControl
     }()
-      
-    private lazy var pages: [UIViewController] = []
-    
-    var presenter: MainPagePresenterProtocol?
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,29 +46,69 @@ class MainPageViewController: UIPageViewController {
     private func setupLayout() {
         view.addSubview(pageControl)
         pageControl.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
+
         }
+    }
+    
+    @objc private func swipePageControl(_ sender: UIPageControl) {
+        setViewControllers([pages[sender.currentPage]],
+                           direction: .forward,
+                           animated: true)
     }
 }
 
 extension MainPageViewController: MainPageViewProtocol {
     func success(withNumber number: Int) {
+        let router = Router(navigationController: UINavigationController(),
+                            assemblyBuilder: assemblyBuilder)
+        guard let rockets = presenter?.rockets?.count else { return }
         
+        for serialNumber in 0..<rockets {
+            let viewController = assemblyBuilder.setRocketModule(router: router,
+                                                                 with: serialNumber)
+            pages.append(viewController)
+        }
+        
+        pageControl.currentPage = currentPage
+        pageControl.numberOfPages = pages.count
+        
+        setViewControllers([pages[self.currentPage]],
+                           direction: .forward,
+                           animated: true)
     }
 }
 
 extension MainPageViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
-    
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        return pages[1]
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        guard let currentIndex = pages.firstIndex(of: viewController) else { return nil }
+        if currentIndex == 0 {
+            return pages.last
+        } else {
+            return pages[currentIndex - 1]
+        }
     }
     
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        return pages[1]
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        guard let currentIndex = pages.firstIndex(of: viewController) else { return nil }
+        if currentIndex < pages.count - 1 {
+            return pages[currentIndex + 1]
+        } else {
+            return pages.first
+        }
     }
     
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            didFinishAnimating finished: Bool,
+                            previousViewControllers: [UIViewController],
+                            transitionCompleted completed: Bool) {
+        guard let viewControllers = pageViewController.viewControllers,
+              let currentIndex = pages.firstIndex(of: viewControllers[0]) else { return }
+        pageControl.currentPage = currentIndex
     }
 }
 

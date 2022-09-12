@@ -13,7 +13,6 @@ protocol RocketPresenterProtocol: AnyObject {
          router: RouterProtocol)
     
     var rockets: [Rocket]? { get set }
-    
     func fetchRockets()
 }
 

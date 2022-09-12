@@ -17,6 +17,8 @@ class RocketTableViewCell: UITableViewCell {
         label.textAlignment = .right
         label.font = .systemFont(ofSize: 16)
         label.textColor = .white
+        label.minimumScaleFactor = 0.5
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
     
@@ -25,6 +27,8 @@ class RocketTableViewCell: UITableViewCell {
         label.textAlignment = .left
         label.font = .systemFont(ofSize: 16)
         label.textColor = .lightGray
+        label.minimumScaleFactor = 0.5
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
     

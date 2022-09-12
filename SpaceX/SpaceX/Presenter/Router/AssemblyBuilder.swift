@@ -13,7 +13,7 @@ protocol AssemblyBuilderProtocol {
                          with serialNumber: Int) -> UIViewController
 }
 
-class AssemblyModuleBuilder: AssemblyBuilderProtocol {
+class AssemblyBuilder: AssemblyBuilderProtocol {
     
     func setMainPageModule(router: Router) -> UIViewController {
         let networkManager = NetworkManager()

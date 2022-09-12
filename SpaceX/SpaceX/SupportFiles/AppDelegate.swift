@@ -12,7 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     let navigationController = UINavigationController()
-    let assemblyBuilder = AssemblyModuleBuilder()
+    let assemblyBuilder = AssemblyBuilder()
     var deviceOrientation = UIInterfaceOrientationMask.portrait
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
