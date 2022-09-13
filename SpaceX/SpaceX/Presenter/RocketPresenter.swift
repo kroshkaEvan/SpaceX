@@ -17,6 +17,9 @@ protocol RocketPresenterProtocol: AnyObject {
     func fetchRockets()
     func fetchRocketImage(_ imageView: UIImageView,
                           with serialNumber: Int)
+    func openLaunchVC(viewController: UIViewController,
+                      idRocket: String,
+                      rocketName: String)
 }
 
 class RocketPresenter: RocketPresenterProtocol {
@@ -47,7 +50,7 @@ class RocketPresenter: RocketPresenterProtocol {
                 switch result {
                 case let .success(rocket):
                     self.rockets = rocket
-                    self.view?.success()
+                    self.view?.successUpload()
                 case let .failure(error):
                     self.view?.failure(error: error)
                 }
@@ -69,6 +72,14 @@ class RocketPresenter: RocketPresenterProtocol {
                            options: options,
                            into: imageView)
         }
+    }
+    
+    func openLaunchVC(viewController: UIViewController,
+                      idRocket: String,
+                      rocketName: String) {
+        router?.pushLaunchVC(viewController: viewController,
+                             typeRocket: idRocket,
+                             rocketName: rocketName)
     }
 }
 

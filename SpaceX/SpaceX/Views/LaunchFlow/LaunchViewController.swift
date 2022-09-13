@@ -8,6 +8,12 @@
 import UIKit
 import SnapKit
 
+protocol LaunchViewProtocol: AnyObject {
+    func successUpload()
+    func successNil()
+    func failure(error: NetworkError)
+}
+
 class LaunchViewController: UIViewController {
     
     private lazy var widthCollectionView = view.frame.size.width - 64
@@ -30,6 +36,8 @@ class LaunchViewController: UIViewController {
                                 forCellWithReuseIdentifier: LaunchCollectionViewCell.identifier)
         return collectionView
     }()
+    
+    var presenter: LaunchPresenterProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +51,8 @@ class LaunchViewController: UIViewController {
     }
     
     private func setupLayout() {
+        navigationController?.isNavigationBarHidden = false
+        title = presenter?.rocketName
         view.backgroundColor = .black
         view.addSubview(launchCollectionView)
         
@@ -62,17 +72,45 @@ extension LaunchViewController: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        4
+        return presenter?.launches?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LaunchCollectionViewCell.identifier,
                                                       for: indexPath)
         if let cell = cell as? LaunchCollectionViewCell {
-            cell.configureCell(nameRocketText: "Rocket",
-                               dateLaunchText: "DAte",
-                               statusLaunch: "ok")
+            guard let rows = presenter?.launches else { return cell }
+            let sortRows = rows.sorted(by: { $0.dateLocal > $1.dateLocal })
+            let row = sortRows[indexPath.row]
+            var statusLaunch: String?
+            if row.success == true {
+                statusLaunch = "ok"
+            } else {
+                statusLaunch = "fail"
+            }
+            cell.configureCell(nameRocketText: row.name,
+                               dateLaunchText: row.dateLocal,
+                               statusLaunch: statusLaunch ?? "")
         }
         return cell
     }
+}
+
+extension LaunchViewController: LaunchViewProtocol {
+    func successUpload() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.launchCollectionView.reloadData()
+        }
+    }
+    
+    func successNil() {
+        print("launch nil")
+    }
+    
+    func failure(error: NetworkError) {
+        print(error)
+    }
+    
+    
 }

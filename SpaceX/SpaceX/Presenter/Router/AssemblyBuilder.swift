@@ -11,6 +11,9 @@ protocol AssemblyBuilderProtocol {
     func setMainPageModule(router: Router) -> UIViewController
     func setRocketModule(router: Router,
                          with serialNumber: Int) -> UIViewController
+    func setLaunchModule(router: Router,
+                         typeRocket: String,
+                         rocketName: String) -> UIViewController
 }
 
 class AssemblyBuilder: AssemblyBuilderProtocol {
@@ -34,6 +37,21 @@ class AssemblyBuilder: AssemblyBuilderProtocol {
         let presenter = RocketPresenter(view: view,
                                         network: networkManager,
                                         router: router)
+        view.presenter = presenter
+        return view
+    }
+    
+    func setLaunchModule(router: Router,
+                         typeRocket: String,
+                         rocketName: String) -> UIViewController {
+        let networkManager = NetworkManager()
+        let view = LaunchViewController()
+  
+        let presenter = LaunchPresenter(view: view,
+                                        network: networkManager,
+                                        router: router,
+                                        typeRocket: typeRocket,
+                                        rocketName: rocketName)
         view.presenter = presenter
         return view
     }

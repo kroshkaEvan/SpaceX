@@ -8,12 +8,12 @@
 import Foundation
 
 struct Launch: Codable {
-    let typeRocket: TypeRocket
+    let rocket: TypeRocket
     let name, dateLocal: String
     var success: Bool?
     
     enum CodingKeys: String, CodingKey {
-        case typeRocket, name, success
+        case rocket, name, success
         case dateLocal = "date_local"
     }
 }

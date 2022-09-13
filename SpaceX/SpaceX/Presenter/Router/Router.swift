@@ -14,6 +14,9 @@ protocol RouterRocket {
 
 protocol RouterProtocol {
     func initViewController()
+    func pushLaunchVC(viewController: UIViewController,
+                      typeRocket: String,
+                      rocketName: String)
 }
 
 class Router: RouterRocket {
@@ -36,6 +39,19 @@ extension Router: RouterProtocol {
         guard let pageViewController = assemblyBuilder?.setMainPageModule(router: self),
               let navigationController = navigationController else { return }
         navigationController.viewControllers = [pageViewController]
+    }
+    
+    func pushLaunchVC(viewController: UIViewController,
+                      typeRocket: String,
+                      rocketName: String) {
+        guard let launchVC = assemblyBuilder?.setLaunchModule(router: self,
+                                                              typeRocket: typeRocket,
+                                                              rocketName: rocketName) else { return }
+        viewController.navigationController?.pushViewController(launchVC,
+                                                                animated: true)
+        let backButton = UIBarButtonItem()
+        backButton.title = "Back"
+        launchVC.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
 }
 

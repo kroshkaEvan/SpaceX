@@ -38,6 +38,7 @@
 		BCDC2E8828CF400600309078 /* AssemblyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDC2E8728CF400600309078 /* AssemblyBuilder.swift */; };
 		BCDC2E8A28CF482500309078 /* MainPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDC2E8928CF482500309078 /* MainPagePresenter.swift */; };
 		BCDC2E9028CFCF8B00309078 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = BCDC2E8F28CFCF8B00309078 /* Nuke */; };
+		BCDC2E9228D0D2D700309078 /* LaunchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDC2E9128D0D2D700309078 /* LaunchPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,7 @@
 		BCDC2E8528CF3FB800309078 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		BCDC2E8728CF400600309078 /* AssemblyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyBuilder.swift; sourceTree = "<group>"; };
 		BCDC2E8928CF482500309078 /* MainPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPagePresenter.swift; sourceTree = "<group>"; };
+		BCDC2E9128D0D2D700309078 /* LaunchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +215,7 @@
 				BCDC2E8428CF3FA200309078 /* Router */,
 				BCDC2E8228CF3E9800309078 /* RocketPresenter.swift */,
 				BCDC2E8928CF482500309078 /* MainPagePresenter.swift */,
+				BCDC2E9128D0D2D700309078 /* LaunchPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				BC84B5FA28BD40E200D877CC /* Diameter.swift in Sources */,
 				BC84B60428BD416C00D877CC /* LandingLegs.swift in Sources */,
 				BC84B61B28BF477E00D877CC /* Launch.swift in Sources */,
+				BCDC2E9228D0D2D700309078 /* LaunchPresenter.swift in Sources */,
 				BC84B5FC28BD40FA00D877CC /* Engines.swift in Sources */,
 				BC84B5FE28BD411600D877CC /* ISP.swift in Sources */,
 				BC84B62728C1082B00D877CC /* RocketTableViewCell.swift in Sources */,

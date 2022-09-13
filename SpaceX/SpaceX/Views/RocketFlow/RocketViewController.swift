@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 protocol RocketViewProtocol: AnyObject {
-    func success()
+    func successUpload()
     func failure(error: NetworkError)
 }
 
@@ -42,6 +42,7 @@ class RocketViewController: UIViewController {
         super.viewDidLoad()
         setupLayout()
         setupView()
+        setupActions()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,16 +83,33 @@ class RocketViewController: UIViewController {
         descriptionRocketView.rocketTableView.dataSource = self
         descriptionRocketView.rocketTableView.delegate = self
     }
+    
+    private func setupActions() {
+        descriptionRocketView.watchRocketLaunchesButton.addTarget(self,
+                                                                  action: #selector(didTapLaunches),
+                                                                  for: .touchUpInside)
+    }
+}
+
+extension RocketViewController {
+    @objc private func didTapLaunches()  {
+        guard let idRocket = presenter?.rockets?[serialNumber].id,
+                let rocketName = presenter?.rockets?[serialNumber].name else { return }
+        self.presenter?.openLaunchVC(viewController: self,
+                                     idRocket: idRocket,
+                                     rocketName: rocketName)
+    }
 }
 
 extension RocketViewController: RocketViewProtocol {
-    func success() {
+    func successUpload() {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             self.descriptionRocketView.rocketName.text = self.presenter?.self.rockets?[self.serialNumber].name
             self.presenter?.fetchRocketImage(self.descriptionRocketView.backgroundImageView,
                                              with: self.serialNumber)
         }
+        descriptionRocketView.rocketCollectionView.reloadData()
         descriptionRocketView.rocketTableView.reloadData()
     }
     

@@ -49,7 +49,6 @@ class MainPageViewController: UIPageViewController {
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
-
         }
     }
     

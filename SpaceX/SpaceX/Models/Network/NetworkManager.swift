@@ -14,6 +14,7 @@ typealias LaunchCompletionClosure = ((Result<[Launch], NetworkError>) -> Void)
 protocol NetworkProtocol {
     func getData<T: Decodable>(baseURL: String,
                                endPoint: API.EndPoint,
+                               encoding: ParameterEncoding,
                                completion: @escaping (Result<T, NetworkError>) -> Void)
     func fetchRockets(completion: @escaping RocketCompletionClosure)
     func fetchLaunches(completion: @escaping LaunchCompletionClosure)
@@ -24,12 +25,13 @@ class NetworkManager: NetworkProtocol {
     
     func getData<T: Decodable>(baseURL: String,
                                endPoint: API.EndPoint,
+                               encoding: ParameterEncoding,
                                completion: @escaping (Result<T, NetworkError>) -> Void) {
         let url = "\(baseURL)\(endPoint)"
         AF.sessionConfiguration.timeoutIntervalForRequest = 50
         AF.request(url,
                    method: .get,
-                   encoding: URLEncoding.httpBody)
+                   encoding: encoding)
             .validate(statusCode: 200..<299)
             .validate(contentType: ["application/json"])
             .responseData { (responseData) in
@@ -57,12 +59,14 @@ class NetworkManager: NetworkProtocol {
     func fetchRockets(completion: @escaping RocketCompletionClosure) {
         getData(baseURL: API.baseURL,
                 endPoint: API.EndPoint.rockets,
+                encoding: URLEncoding.httpBody,
                 completion: completion)
     }
 
     func fetchLaunches(completion: @escaping LaunchCompletionClosure) {
         getData(baseURL: API.baseURL,
                 endPoint: API.EndPoint.launches,
+                encoding: URLEncoding.queryString,
                 completion: completion)
     }
 }

@@ -16,7 +16,8 @@ class RocketCollectionViewCell: UICollectionViewCell {
     private lazy var valueLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = .systemFont(ofSize: 16,
+                                 weight: .semibold)
         label.textColor = .white
         return label
     }()
@@ -24,7 +25,8 @@ class RocketCollectionViewCell: UICollectionViewCell {
     private lazy var parameterLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 14)
+        label.font = .systemFont(ofSize: 14,
+                                 weight: .regular)
         label.textColor = .systemGray
         return label
     }()
