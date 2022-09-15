@@ -55,6 +55,7 @@ class SettingsViewController: UIViewController {
     }
     
     private func setupLayout() {
+        view.backgroundColor = .black
         view.addSubview(settingsTableView)
         
         settingsTableView.snp.makeConstraints { make in
