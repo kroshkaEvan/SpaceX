@@ -12,6 +12,9 @@
 		BC0AB13628CDE679008556AE /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0AB13528CDE679008556AE /* LaunchViewController.swift */; };
 		BC0AB13828CDE730008556AE /* LaunchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0AB13728CDE730008556AE /* LaunchCollectionViewCell.swift */; };
 		BC6277EA28D338D600F5E133 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6277E928D338D600F5E133 /* SettingsPresenter.swift */; };
+		BC6277ED28D377C700F5E133 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6277EC28D377C700F5E133 /* UserDefaults.swift */; };
+		BC6277EF28D377EA00F5E133 /* UserDefaultKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6277EE28D377EA00F5E133 /* UserDefaultKey.swift */; };
+		BC6277F128D3780E00F5E133 /* UserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6277F028D3780E00F5E133 /* UserDefaultsStorage.swift */; };
 		BC84B5D728BD169900D877CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B5D628BD169900D877CC /* AppDelegate.swift */; };
 		BC84B5DB28BD169900D877CC /* RocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B5DA28BD169900D877CC /* RocketViewController.swift */; };
 		BC84B5E028BD16A000D877CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC84B5DF28BD16A000D877CC /* Assets.xcassets */; };
@@ -48,6 +51,9 @@
 		BC0AB13528CDE679008556AE /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		BC0AB13728CDE730008556AE /* LaunchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCollectionViewCell.swift; sourceTree = "<group>"; };
 		BC6277E928D338D600F5E133 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		BC6277EC28D377C700F5E133 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		BC6277EE28D377EA00F5E133 /* UserDefaultKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKey.swift; sourceTree = "<group>"; };
+		BC6277F028D3780E00F5E133 /* UserDefaultsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorage.swift; sourceTree = "<group>"; };
 		BC84B5D328BD169800D877CC /* SpaceX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC84B5D628BD169900D877CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC84B5DA28BD169900D877CC /* RocketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +115,16 @@
 			path = LaunchFlow;
 			sourceTree = "<group>";
 		};
+		BC6277EB28D377B700F5E133 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				BC6277EC28D377C700F5E133 /* UserDefaults.swift */,
+				BC6277EE28D377EA00F5E133 /* UserDefaultKey.swift */,
+				BC6277F028D3780E00F5E133 /* UserDefaultsStorage.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		BC84B5CA28BD169800D877CC = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +156,7 @@
 		BC84B5F528BD3F1900D877CC /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BC6277EB28D377B700F5E133 /* Data */,
 				BC84B60728BD432500D877CC /* Network */,
 			);
 			path = Models;
@@ -337,6 +354,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC6277ED28D377C700F5E133 /* UserDefaults.swift in Sources */,
 				BC84B62528BF8F7900D877CC /* RocketCollectionViewCell.swift in Sources */,
 				BCDC2E8828CF400600309078 /* AssemblyBuilder.swift in Sources */,
 				BC84B60928BD434400D877CC /* NetworkManager.swift in Sources */,
@@ -364,6 +382,8 @@
 				BC84B60628BD418700D877CC /* Mass.swift in Sources */,
 				BC84B62328BF5B7A00D877CC /* RocketView.swift in Sources */,
 				BC0AB13628CDE679008556AE /* LaunchViewController.swift in Sources */,
+				BC6277F128D3780E00F5E133 /* UserDefaultsStorage.swift in Sources */,
+				BC6277EF28D377EA00F5E133 /* UserDefaultKey.swift in Sources */,
 				BC6277EA28D338D600F5E133 /* SettingsPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

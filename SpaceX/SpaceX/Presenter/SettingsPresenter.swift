@@ -9,27 +9,32 @@ import UIKit
 
 protocol SettingsPresenterProtocol: AnyObject {
     init(view: SettingsViewProtocol,
-         network: NetworkProtocol,
          router: RouterProtocol)
+    
+    var userDefaults: UserDefaultsStorage { get set }
+    func closeVC()
 }
 
 class SettingsPresenter: SettingsPresenterProtocol {
     // MARK: - Properties
     
     let view: SettingsViewProtocol?
-    let network: NetworkProtocol?
     let router: RouterProtocol?
+    
+    var userDefaults = UserDefaultsStorage()
     
     // MARK: - Initializater
     
     required init(view: SettingsViewProtocol,
-                  network: NetworkProtocol,
                   router: RouterProtocol) {
         self.view = view
-        self.network = network
         self.router = router
     }
     
+    func closeVC() {
+        guard let view = view as? UIViewController else { return }
+        router?.dismissSettingsVC(viewController: view)
+    }
 }
 
 

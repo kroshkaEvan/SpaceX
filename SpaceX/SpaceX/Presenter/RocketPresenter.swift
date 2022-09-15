@@ -14,6 +14,8 @@ protocol RocketPresenterProtocol: AnyObject {
          router: RouterProtocol)
     
     var rockets: [Rocket]? { get set }
+    var userDefaults: UserDefaultsStorage { get set }
+    
     func fetchRockets()
     func fetchRocketImage(_ imageView: UIImageView,
                           with serialNumber: Int)
@@ -28,7 +30,8 @@ class RocketPresenter: RocketPresenterProtocol {
     let network: NetworkProtocol?
     var router: RouterProtocol?
     var rockets: [Rocket]?
-    
+    var userDefaults = UserDefaultsStorage()
+
     // MARK: - Initializater
     
     required init(view: RocketViewProtocol,

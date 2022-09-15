@@ -22,7 +22,7 @@ class SettingsTableViewCell: UITableViewCell {
         return label
     }()
     
-    private lazy var valueSegmentedControl: UISegmentedControl = {
+    lazy var valueSegmentedControl: UISegmentedControl = {
         let font = UIFont.systemFont(ofSize: 17.5)
         let segmentedItems = ["", ""]
         let segmentedControl = UISegmentedControl(items: segmentedItems)

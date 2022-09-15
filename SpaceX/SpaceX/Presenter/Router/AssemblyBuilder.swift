@@ -57,11 +57,9 @@ class AssemblyBuilder: AssemblyBuilderProtocol {
     }
     
     func setSettingModule(router: Router) -> UIViewController {
-        let networkManager = NetworkManager()
         let view = SettingsViewController()
         let presenter = SettingsPresenter(view: view,
-                                        network: networkManager,
-                                        router: router)
+                                          router: router)
         view.presenter = presenter
         return view
     }

@@ -9,8 +9,11 @@ import UIKit
 import SnapKit
 
 protocol SettingsViewProtocol: AnyObject {
-    func download()
-    func save()
+    func didTapClose()
+    func massSegmentDidChange(_ sender: UISegmentedControl)
+    func heightSegmentDidChange(_ sender: UISegmentedControl)
+    func payloadSegmentDidChange(_ sender: UISegmentedControl)
+    func diameterSegmentDidChange(_ sender: UISegmentedControl)
 }
 
 class SettingsViewController: UIViewController {
@@ -61,19 +64,27 @@ class SettingsViewController: UIViewController {
             make.bottom.equalToSuperview()
         }
     }
-    
-    @objc private func didTapClose() {
-        self.dismiss(animated: true)
-    }
 }
 
 extension SettingsViewController: SettingsViewProtocol {
-    func download() {
-        
+    @objc internal func didTapClose() {
+        presenter?.closeVC()
     }
     
-    func save() {
-        
+    @objc internal func massSegmentDidChange(_ sender: UISegmentedControl) {
+        presenter?.userDefaults.mass = sender.selectedSegmentIndex
+    }
+    
+    @objc internal func heightSegmentDidChange(_ sender: UISegmentedControl) {
+        presenter?.userDefaults.height = sender.selectedSegmentIndex
+    }
+    
+    @objc internal func payloadSegmentDidChange(_ sender: UISegmentedControl) {
+        presenter?.userDefaults.payload = sender.selectedSegmentIndex
+    }
+    
+    @objc internal func diameterSegmentDidChange(_ sender: UISegmentedControl) {
+        presenter?.userDefaults.diameter = sender.selectedSegmentIndex
     }
 }
 
@@ -113,20 +124,35 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
         if let cell = cell as? SettingsTableViewCell {
             switch indexPath.section {
             case 0:
+                cell.valueSegmentedControl.addTarget(nil,
+                                                     action: #selector(heightSegmentDidChange(_: )),
+                                                     for: .valueChanged)
                 cell.configureCell(parameterText: "Height",
                                    segmentedItems: ["m", "ft"])
+                cell.valueSegmentedControl.selectedSegmentIndex = presenter?.userDefaults.height ?? 0
             case 1:
+                cell.valueSegmentedControl.addTarget(nil,
+                                                     action: #selector(diameterSegmentDidChange(_:)),
+                                                     for: .valueChanged)
                 cell.configureCell(parameterText: "Diameter",
                                    segmentedItems: ["m", "ft"])
+                cell.valueSegmentedControl.selectedSegmentIndex = presenter?.userDefaults.diameter ?? 0
             case 2:
+                cell.valueSegmentedControl.addTarget(nil,
+                                                     action: #selector(massSegmentDidChange(_: )),
+                                                     for: .valueChanged)
                 cell.configureCell(parameterText: "Mass",
                                    segmentedItems: ["kg", "lb"])
+                cell.valueSegmentedControl.selectedSegmentIndex = presenter?.userDefaults.mass ?? 0
             case 3:
+                cell.valueSegmentedControl.addTarget(nil,
+                                                     action: #selector(payloadSegmentDidChange(_:)),
+                                                     for: .valueChanged)
                 cell.configureCell(parameterText: "Payload weight",
                                    segmentedItems: ["kg", "lb"])
+                cell.valueSegmentedControl.selectedSegmentIndex = presenter?.userDefaults.payload ?? 0
             default:
-                cell.configureCell(parameterText: "Mass",
-                                   segmentedItems: ["kg", "lb"])
+                print("")
             }
         }
         return cell

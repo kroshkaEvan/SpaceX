@@ -17,7 +17,8 @@ protocol RouterProtocol {
     func pushLaunchVC(viewController: UIViewController,
                       typeRocket: String,
                       rocketName: String)
-    func presentSettingsVC(viewController: UIViewController) 
+    func presentSettingsVC(viewController: UIViewController)
+    func dismissSettingsVC(viewController: UIViewController)
 }
 
 class Router: RouterRocket {
@@ -56,6 +57,10 @@ extension Router: RouterProtocol {
         guard let settingsListViewController = assemblyBuilder?.setSettingModule(router: self) else { return }
         let navController = UINavigationController(rootViewController: settingsListViewController)
         viewController.navigationController?.present(navController, animated: true)
+    }
+    
+    func dismissSettingsVC(viewController: UIViewController) {
+        viewController.dismiss(animated: true)
     }
     
 }
