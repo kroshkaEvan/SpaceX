@@ -79,18 +79,12 @@ extension LaunchViewController: UICollectionViewDataSource, UICollectionViewDele
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LaunchCollectionViewCell.identifier,
                                                       for: indexPath)
         if let cell = cell as? LaunchCollectionViewCell {
-            guard let rows = presenter?.launches else { return cell }
-            let sortRows = rows.sorted(by: { $0.dateLocal > $1.dateLocal })
-            let row = sortRows[indexPath.row]
-            var statusLaunch: String?
-            if row.success == true {
-                statusLaunch = "ok"
-            } else {
-                statusLaunch = "fail"
-            }
-            cell.configureCell(nameRocketText: row.name,
-                               dateLaunchText: row.dateLocal,
-                               statusLaunch: statusLaunch ?? "")
+            presenter?.getLaunchesDataToCell(indexPath: indexPath.row,
+                                             complition: { name, dateLocal, statusLaunch in
+                cell.configureCell(nameRocketText: name ?? "",
+                                   dateLaunchText: dateLocal ?? "",
+                                   statusLaunch: statusLaunch ?? "")
+            })
         }
         return cell
     }

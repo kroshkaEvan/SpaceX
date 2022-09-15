@@ -19,6 +19,8 @@ protocol LaunchPresenterProtocol: AnyObject {
     var rocketName: String { get }
     
     func fetchLaunchesData()
+    func getLaunchesDataToCell(indexPath: Int,
+                               complition: @escaping(String?, String?, String?) -> Void) 
     
 }
 
@@ -71,6 +73,14 @@ class LaunchPresenter: LaunchPresenterProtocol {
                 return
             }
         }
+    }
+    
+    func getLaunchesDataToCell(indexPath: Int,
+                               complition: @escaping(String?, String?, String?) -> Void) {
+        let sortRows = self.launches?.sorted(by: { $0.dateLocal > $1.dateLocal })
+        let row = sortRows?[indexPath]
+        let statusLaunch: String? = row?.success ?? false ? "ok" : "fail"
+        complition(row?.name, row?.dateLocal, statusLaunch)
     }
 }
 
