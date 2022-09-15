@@ -8,6 +8,11 @@
 import UIKit
 import SnapKit
 
+protocol SettingsViewProtocol: AnyObject {
+    func download()
+    func save()
+}
+
 class SettingsViewController: UIViewController {
     
     private lazy var settingsTableView: UITableView = {
@@ -20,15 +25,18 @@ class SettingsViewController: UIViewController {
                            forCellReuseIdentifier: SettingsTableViewCell.identifier)
         return tableView
     }()
+    
+    var presenter: SettingsPresenterProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
-        setupNavigationController()
+        configureNavigation()
         setupTableView()
     }
     
-    private func setupNavigationController() {
+    private func configureNavigation() {
+        navigationController?.navigationBar.topItem?.title = "Настройки"
         let closeButton = UIBarButtonItem(title: "Close",
                                           style: .plain,
                                           target: self,
@@ -55,6 +63,16 @@ class SettingsViewController: UIViewController {
     }
     
     @objc private func didTapClose() {
+        self.dismiss(animated: true)
+    }
+}
+
+extension SettingsViewController: SettingsViewProtocol {
+    func download() {
+        
+    }
+    
+    func save() {
         
     }
 }

@@ -88,27 +88,27 @@ class RocketViewController: UIViewController {
         descriptionRocketView.watchRocketLaunchesButton.addTarget(self,
                                                                   action: #selector(didTapLaunches),
                                                                   for: .touchUpInside)
+        descriptionRocketView.settingsButton.addTarget(self,
+                                                       action: #selector(didTapSettings),
+                                                       for: .touchUpInside)
     }
 }
 
 extension RocketViewController {
     @objc private func didTapLaunches()  {
-        guard let idRocket = presenter?.rockets?[serialNumber].id,
-                let rocketName = presenter?.rockets?[serialNumber].name else { return }
-        self.presenter?.openLaunchVC(viewController: self,
-                                     idRocket: idRocket,
-                                     rocketName: rocketName)
+        presenter?.openLaunchVC(serialNumber: serialNumber)
+    }
+    
+    @objc private func didTapSettings()  {
+        presenter?.openSettingsVC()
     }
 }
 
 extension RocketViewController: RocketViewProtocol {
     func successUpload() {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.descriptionRocketView.rocketName.text = self.presenter?.self.rockets?[self.serialNumber].name
-            self.presenter?.fetchRocketImage(self.descriptionRocketView.backgroundImageView,
-                                             with: self.serialNumber)
-        }
+        descriptionRocketView.rocketName.text = presenter?.rockets?[serialNumber].name
+        presenter?.fetchRocketImage(descriptionRocketView.backgroundImageView,
+                                    with: serialNumber)
         descriptionRocketView.rocketCollectionView.reloadData()
         descriptionRocketView.rocketTableView.reloadData()
     }
@@ -133,7 +133,7 @@ extension RocketViewController: UICollectionViewDataSource, UICollectionViewDele
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RocketCollectionViewCell.identifier,
                                                       for: indexPath)
         if let cell = cell as? RocketCollectionViewCell,
-           let rocket = self.presenter?.rockets?[self.serialNumber] {
+           let rocket = presenter?.rockets?[serialNumber] {
             DispatchQueue.main.async {
                 switch indexPath.row {
                 case 0:
@@ -209,7 +209,7 @@ extension RocketViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: RocketTableViewCell.identifier,
                                                  for: indexPath)
         if let cell = cell as? RocketTableViewCell,
-           let rocket = self.presenter?.rockets?[self.serialNumber] {
+           let rocket = presenter?.rockets?[serialNumber] {
             DispatchQueue.main.async {
                 switch indexPath.section {
                 case 0:

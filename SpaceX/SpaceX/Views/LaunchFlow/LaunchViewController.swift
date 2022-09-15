@@ -43,6 +43,7 @@ class LaunchViewController: UIViewController {
         super.viewDidLoad()
         setupLayout()
         setupCollectionView()
+        configureNavigation()
     }
     
     private func setupCollectionView() {
@@ -50,9 +51,15 @@ class LaunchViewController: UIViewController {
         launchCollectionView.dataSource = self
     }
     
-    private func setupLayout() {
+    private func configureNavigation() {
         navigationController?.isNavigationBarHidden = false
         title = presenter?.rocketName
+        let backButton = UIBarButtonItem()
+        backButton.title = "Back"
+        navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+    }
+    
+    private func setupLayout() {
         view.backgroundColor = .black
         view.addSubview(launchCollectionView)
         
@@ -92,10 +99,7 @@ extension LaunchViewController: UICollectionViewDataSource, UICollectionViewDele
 
 extension LaunchViewController: LaunchViewProtocol {
     func successUpload() {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.launchCollectionView.reloadData()
-        }
+        launchCollectionView.reloadData()
     }
     
     func successNil() {

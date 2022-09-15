@@ -17,6 +17,7 @@ protocol RouterProtocol {
     func pushLaunchVC(viewController: UIViewController,
                       typeRocket: String,
                       rocketName: String)
+    func presentSettingsVC(viewController: UIViewController) 
 }
 
 class Router: RouterRocket {
@@ -49,10 +50,14 @@ extension Router: RouterProtocol {
                                                               rocketName: rocketName) else { return }
         viewController.navigationController?.pushViewController(launchVC,
                                                                 animated: true)
-        let backButton = UIBarButtonItem()
-        backButton.title = "Back"
-        launchVC.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
+    
+    func presentSettingsVC(viewController: UIViewController) {
+        guard let settingsListViewController = assemblyBuilder?.setSettingModule(router: self) else { return }
+        let navController = UINavigationController(rootViewController: settingsListViewController)
+        viewController.navigationController?.present(navController, animated: true)
+    }
+    
 }
 
 

@@ -20,7 +20,7 @@ protocol LaunchPresenterProtocol: AnyObject {
     
     func fetchLaunchesData()
     func getLaunchesDataToCell(indexPath: Int,
-                               complition: @escaping(String?, String?, String?) -> Void) 
+                               complition: @escaping(String?, String?, String?) -> Void)
     
 }
 
@@ -82,6 +82,8 @@ class LaunchPresenter: LaunchPresenterProtocol {
         let statusLaunch: String? = row?.success ?? false ? "ok" : "fail"
         complition(row?.name, row?.dateLocal, statusLaunch)
     }
+    
+
 }
 
 
