@@ -16,6 +16,8 @@ protocol LaunchViewProtocol: AnyObject {
 
 class LaunchViewController: UIViewController {
     
+    // MARK: - Properties
+    
     private lazy var widthCollectionView = view.frame.size.width - 64
     
     private lazy var collectionViewLayout: UICollectionViewFlowLayout = {
@@ -38,6 +40,8 @@ class LaunchViewController: UIViewController {
     }()
     
     var presenter: LaunchPresenterProtocol?
+    
+    // MARK: - Initializers
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +49,8 @@ class LaunchViewController: UIViewController {
         setupCollectionView()
         configureNavigation()
     }
+    
+    // MARK: - Private Methods
     
     private func setupCollectionView() {
         launchCollectionView.delegate = self
@@ -72,6 +78,8 @@ class LaunchViewController: UIViewController {
     }
 }
 
+// MARK: - UICollectionViewDataSource
+
 extension LaunchViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -97,6 +105,8 @@ extension LaunchViewController: UICollectionViewDataSource, UICollectionViewDele
     }
 }
 
+// MARK: - LaunchViewProtocol
+
 extension LaunchViewController: LaunchViewProtocol {
     func successUpload() {
         launchCollectionView.reloadData()
@@ -109,6 +119,4 @@ extension LaunchViewController: LaunchViewProtocol {
     func failure(error: NetworkError) {
         print(error)
     }
-    
-    
 }

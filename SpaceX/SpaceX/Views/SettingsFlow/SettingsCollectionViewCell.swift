@@ -11,7 +11,7 @@ import SnapKit
 class SettingsTableViewCell: UITableViewCell {
     static let identifier = "SettingsCollectionViewCell"
     
-    // MARK: - Public properties
+    // MARK: - Properties
         
     private lazy var parameterLabel: UILabel = {
         let label = UILabel()

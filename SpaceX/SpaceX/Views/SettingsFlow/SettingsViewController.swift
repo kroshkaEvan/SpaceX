@@ -18,6 +18,8 @@ protocol SettingsViewProtocol: AnyObject {
 
 class SettingsViewController: UIViewController {
     
+    // MARK: - Properties
+    
     private lazy var settingsTableView: UITableView = {
         let tableView = UITableView(frame: .zero,
                                     style: .grouped)
@@ -30,6 +32,8 @@ class SettingsViewController: UIViewController {
     }()
     
     var presenter: SettingsPresenterProtocol?
+    
+    // MARK: - Initializers
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +41,8 @@ class SettingsViewController: UIViewController {
         configureNavigation()
         setupTableView()
     }
+    
+    // MARK: - Private Methods
     
     private func configureNavigation() {
         navigationController?.navigationBar.topItem?.title = "Настройки"
@@ -67,6 +73,8 @@ class SettingsViewController: UIViewController {
     }
 }
 
+// MARK: - SettingsViewProtocol
+
 extension SettingsViewController: SettingsViewProtocol {
     @objc internal func didTapClose() {
         presenter?.closeVC()
@@ -88,6 +96,8 @@ extension SettingsViewController: SettingsViewProtocol {
         presenter?.userDefaults.diameter = sender.selectedSegmentIndex
     }
 }
+
+// MARK: - UITableViewDataSource
 
 extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
     

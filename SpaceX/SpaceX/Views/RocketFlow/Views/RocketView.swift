@@ -10,6 +10,8 @@ import SnapKit
 
 class RocketView: UIView {
     
+    // MARK: - Properties
+    
     private lazy var contentView: UIView = {
         let view = UIView(frame: .zero)
         view.backgroundColor = .black
@@ -78,7 +80,7 @@ class RocketView: UIView {
     
     lazy var watchRocketLaunchesButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Посмотреть запуски",
+        button.setTitle("Watch launches",
                         for: .normal)
         button.backgroundColor = UIColor(red: 33/255,
                                          green: 33/255,
@@ -101,6 +103,8 @@ class RocketView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Private Methods
     
     private func setupRocketViewLayout() {
         [backgroundImageView, contentView,

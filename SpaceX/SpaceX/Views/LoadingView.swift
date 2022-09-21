@@ -11,6 +11,7 @@ import UIKit
 class LoadingView: UIView {
     
     // MARK: - Private properties
+    
     private lazy var loadingActivityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
         indicator.style = .large

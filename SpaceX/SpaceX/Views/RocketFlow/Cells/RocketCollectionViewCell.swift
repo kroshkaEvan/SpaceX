@@ -11,7 +11,7 @@ import SnapKit
 class RocketCollectionViewCell: UICollectionViewCell {
     static let identifier = "RocketCollectionViewCell"
     
-    // MARK: - Public properties
+    // MARK: - Properties
     
     private lazy var valueLabel: UILabel = {
         let label = UILabel()
@@ -49,7 +49,7 @@ class RocketCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Private Methods
+    // MARK: - Methods
     
     private func setupCellLayout() {
         contentView.layer.backgroundColor = UIColor(red: 33/255,

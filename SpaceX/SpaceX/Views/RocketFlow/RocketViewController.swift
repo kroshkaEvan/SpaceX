@@ -16,6 +16,8 @@ protocol RocketViewProtocol: AnyObject {
 
 class RocketViewController: UIViewController {
     
+    // MARK: - Private properties
+    
     private lazy var scrollView: UIScrollView = {
         let view = UIScrollView(frame: .zero)
         view.contentInsetAdjustmentBehavior = .never
@@ -26,10 +28,14 @@ class RocketViewController: UIViewController {
     
     private var descriptionRocketView = RocketView()
     
+    // MARK: - Public properties
+    
     var presenter: RocketPresenterProtocol?
     let networkManager = NetworkManager()
     var serialNumber: Int
     
+    // MARK: - Initializers
+
     init(serialNumber: Int) {
         self.serialNumber = serialNumber
         super.init(nibName: nil, bundle: nil)
@@ -51,6 +57,8 @@ class RocketViewController: UIViewController {
         configureNavigation()
     }
     
+    // MARK: - Private Methods
+
     private func setupLayout() {
         view.addSubview(scrollView)
         scrollView.addSubview(descriptionRocketView)
@@ -95,6 +103,8 @@ class RocketViewController: UIViewController {
     }
 }
 
+// MARK: - Objc Methods
+
 extension RocketViewController {
     @objc private func didTapLaunches()  {
         presenter?.openLaunchVC(serialNumber: serialNumber)
@@ -104,6 +114,8 @@ extension RocketViewController {
         presenter?.openSettingsVC()
     }
 }
+
+// MARK: - RocketViewProtocol
 
 extension RocketViewController: RocketViewProtocol {
     func successSaveUserDefaults() {
@@ -124,6 +136,8 @@ extension RocketViewController: RocketViewProtocol {
         print(error)
     }
 }
+
+// MARK: - UICollectionViewDataSource
 
 extension RocketViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
@@ -185,6 +199,8 @@ extension RocketViewController: UICollectionViewDataSource, UICollectionViewDele
         return cell
     }
 }
+
+// MARK: - UITableViewDataSource
 
 extension RocketViewController: UITableViewDataSource, UITableViewDelegate {
     

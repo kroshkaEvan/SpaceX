@@ -10,7 +10,7 @@ import UIKit
 class RocketTableViewCell: UITableViewCell {
     static let identifier = "RocketTableViewCell"
     
-    // MARK: - Public properties
+    // MARK: - Private properties
     
     private lazy var valueLabel: UILabel = {
         let label = UILabel()
@@ -33,6 +33,7 @@ class RocketTableViewCell: UITableViewCell {
     }()
     
     // MARK: - Initializers
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         setupLayout()
@@ -42,7 +43,7 @@ class RocketTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Private Methods
+    // MARK: - Methods
     
     private func setupLayout() {
         selectionStyle = .none

@@ -15,12 +15,11 @@ protocol MainPageViewProtocol: AnyObject {
 
 class MainPageViewController: UIPageViewController {
     
+    // MARK: - Private properties
+    
     private lazy var pages: [UIViewController] = []
     private lazy var assemblyBuilder = AssemblyBuilder()
     private lazy var loadingView = LoadingView()
-
-    var presenter: MainPagePresenterProtocol?
-    var currentPage = 0
 
     private lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
@@ -33,12 +32,21 @@ class MainPageViewController: UIPageViewController {
                               for: .valueChanged)
         return pageControl
     }()
+    
+    // MARK: - Public properties
+    
+    var presenter: MainPagePresenterProtocol?
+    var currentPage = 0
         
+    // MARK: - Initializers
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         setupLayout()
     }
+    
+    // MARK: - Private Methods
         
     private func setupView() {
         dataSource = self
@@ -61,12 +69,16 @@ class MainPageViewController: UIPageViewController {
         }
     }
     
+    // MARK: - Objc Methods
+    
     @objc private func swipePageControl(_ sender: UIPageControl) {
         setViewControllers([pages[sender.currentPage]],
                            direction: .forward,
                            animated: true)
     }
 }
+
+// MARK: - MainPageViewProtocol
 
 extension MainPageViewController: MainPageViewProtocol {
     func success(withNumber number: Int) {
@@ -99,6 +111,8 @@ extension MainPageViewController: MainPageViewProtocol {
         }
     }
 }
+
+// MARK: - UIPageViewControllerDataSource
 
 extension MainPageViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController,

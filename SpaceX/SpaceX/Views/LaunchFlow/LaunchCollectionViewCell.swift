@@ -10,7 +10,7 @@ import UIKit
 class LaunchCollectionViewCell: UICollectionViewCell {
     static let identifier = "LaunchCollectionViewCell"
     
-    // MARK: - Public properties
+    // MARK: - Private properties
     
     private lazy var nameRocketLabel: UILabel = {
         let label = UILabel()
@@ -48,7 +48,7 @@ class LaunchCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Private Methods
+    // MARK: - Methods
     
     private func setupCellLayout() {
         contentView.layer.backgroundColor = UIColor(red: 33/255,
