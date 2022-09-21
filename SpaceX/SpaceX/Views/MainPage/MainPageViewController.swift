@@ -63,7 +63,7 @@ class MainPageViewController: UIPageViewController {
         
         loadingView.snp.makeConstraints { make in
             make.leading.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.top.equalTo(view.snp.top)
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
         }

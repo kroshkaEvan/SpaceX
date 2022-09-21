@@ -37,6 +37,7 @@
 		BC84B62528BF8F7900D877CC /* RocketCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B62428BF8F7800D877CC /* RocketCollectionViewCell.swift */; };
 		BC84B62728C1082B00D877CC /* RocketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B62628C1082B00D877CC /* RocketTableViewCell.swift */; };
 		BCA63AED28DB1A8E007813F1 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA63AEC28DB1A8E007813F1 /* LoadingView.swift */; };
+		BCA63AEF28DB3A5E007813F1 /* Extension UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA63AEE28DB3A5E007813F1 /* Extension UILabel.swift */; };
 		BCDC2E8128CF3C4900309078 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDC2E8028CF3C4900309078 /* MainPageViewController.swift */; };
 		BCDC2E8328CF3E9800309078 /* RocketPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDC2E8228CF3E9800309078 /* RocketPresenter.swift */; };
 		BCDC2E8628CF3FB800309078 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDC2E8528CF3FB800309078 /* Router.swift */; };
@@ -77,6 +78,7 @@
 		BC84B62428BF8F7800D877CC /* RocketCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketCollectionViewCell.swift; sourceTree = "<group>"; };
 		BC84B62628C1082B00D877CC /* RocketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketTableViewCell.swift; sourceTree = "<group>"; };
 		BCA63AEC28DB1A8E007813F1 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		BCA63AEE28DB3A5E007813F1 /* Extension UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension UILabel.swift"; sourceTree = "<group>"; };
 		BCDC2E8028CF3C4900309078 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		BCDC2E8228CF3E9800309078 /* RocketPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketPresenter.swift; sourceTree = "<group>"; };
 		BCDC2E8528CF3FB800309078 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				BC84B5D628BD169900D877CC /* AppDelegate.swift */,
 				BC84B5DF28BD16A000D877CC /* Assets.xcassets */,
 				BC84B5E128BD16A000D877CC /* LaunchScreen.storyboard */,
+				BCA63AEE28DB3A5E007813F1 /* Extension UILabel.swift */,
 			);
 			path = SupportFiles;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				BCDC2E8328CF3E9800309078 /* RocketPresenter.swift in Sources */,
 				BC84B5D728BD169900D877CC /* AppDelegate.swift in Sources */,
 				BC84B5FA28BD40E200D877CC /* Diameter.swift in Sources */,
+				BCA63AEF28DB3A5E007813F1 /* Extension UILabel.swift in Sources */,
 				BC84B60428BD416C00D877CC /* LandingLegs.swift in Sources */,
 				BC84B61B28BF477E00D877CC /* Launch.swift in Sources */,
 				BCDC2E9228D0D2D700309078 /* LaunchPresenter.swift in Sources */,

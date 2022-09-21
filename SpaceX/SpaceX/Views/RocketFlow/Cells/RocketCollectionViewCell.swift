@@ -78,5 +78,7 @@ class RocketCollectionViewCell: UICollectionViewCell {
                        valueText: String) {
         parameterLabel.text = parameterText
         valueLabel.text = valueText
+        valueLabel.addCubeAnimation()
+        parameterLabel.addCubeAnimation()
     }
 }
