@@ -34,7 +34,6 @@ class Router: RouterRocket {
         self.navigationController = navigationController
         self.assemblyBuilder = assemblyBuilder
     }
-
 }
 
 extension Router: RouterProtocol {

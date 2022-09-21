@@ -55,6 +55,12 @@ class RocketViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureNavigation()
+        descriptionRocketView.rocketCollectionView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        presenter?.updateView()
     }
     
     // MARK: - Private Methods
@@ -194,7 +200,6 @@ extension RocketViewController: UICollectionViewDataSource, UICollectionViewDele
                                        valueText: "")
                 }
             }
-            self.presenter?.updateView()
         }
         return cell
     }

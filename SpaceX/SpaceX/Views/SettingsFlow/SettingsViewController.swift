@@ -45,7 +45,7 @@ class SettingsViewController: UIViewController {
     // MARK: - Private Methods
     
     private func configureNavigation() {
-        navigationController?.navigationBar.topItem?.title = "Настройки"
+        navigationController?.navigationBar.topItem?.title = "Settings"
         let closeButton = UIBarButtonItem(title: "Close",
                                           style: .plain,
                                           target: self,
