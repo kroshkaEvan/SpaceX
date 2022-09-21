@@ -36,6 +36,7 @@
 		BC84B62328BF5B7A00D877CC /* RocketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B62228BF5B7A00D877CC /* RocketView.swift */; };
 		BC84B62528BF8F7900D877CC /* RocketCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B62428BF8F7800D877CC /* RocketCollectionViewCell.swift */; };
 		BC84B62728C1082B00D877CC /* RocketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC84B62628C1082B00D877CC /* RocketTableViewCell.swift */; };
+		BCA63AED28DB1A8E007813F1 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA63AEC28DB1A8E007813F1 /* LoadingView.swift */; };
 		BCDC2E8128CF3C4900309078 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDC2E8028CF3C4900309078 /* MainPageViewController.swift */; };
 		BCDC2E8328CF3E9800309078 /* RocketPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDC2E8228CF3E9800309078 /* RocketPresenter.swift */; };
 		BCDC2E8628CF3FB800309078 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDC2E8528CF3FB800309078 /* Router.swift */; };
@@ -75,6 +76,7 @@
 		BC84B62228BF5B7A00D877CC /* RocketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketView.swift; sourceTree = "<group>"; };
 		BC84B62428BF8F7800D877CC /* RocketCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketCollectionViewCell.swift; sourceTree = "<group>"; };
 		BC84B62628C1082B00D877CC /* RocketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketTableViewCell.swift; sourceTree = "<group>"; };
+		BCA63AEC28DB1A8E007813F1 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		BCDC2E8028CF3C4900309078 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		BCDC2E8228CF3E9800309078 /* RocketPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketPresenter.swift; sourceTree = "<group>"; };
 		BCDC2E8528CF3FB800309078 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				BC0AB13428CDE65D008556AE /* LaunchFlow */,
 				BC0AB12F28CDB84C008556AE /* SettingsFlow */,
 				BC84B61D28BF4E4E00D877CC /* RocketFlow */,
+				BCA63AEC28DB1A8E007813F1 /* LoadingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				BCDC2E8828CF400600309078 /* AssemblyBuilder.swift in Sources */,
 				BC84B60928BD434400D877CC /* NetworkManager.swift in Sources */,
 				BCDC2E8628CF3FB800309078 /* Router.swift in Sources */,
+				BCA63AED28DB1A8E007813F1 /* LoadingView.swift in Sources */,
 				BC0AB13328CDBE5C008556AE /* SettingsCollectionViewCell.swift in Sources */,
 				BC84B5DB28BD169900D877CC /* RocketViewController.swift in Sources */,
 				BCDC2E8128CF3C4900309078 /* MainPageViewController.swift in Sources */,

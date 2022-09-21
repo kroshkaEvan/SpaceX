@@ -9,13 +9,15 @@ import UIKit
 import SnapKit
 
 protocol MainPageViewProtocol: AnyObject {
-  func success(withNumber number: Int)
+    func success(withNumber number: Int)
+    func isShowLoadingView(_ isShow: Bool)
 }
 
 class MainPageViewController: UIPageViewController {
     
     private lazy var pages: [UIViewController] = []
     private lazy var assemblyBuilder = AssemblyBuilder()
+    private lazy var loadingView = LoadingView()
 
     var presenter: MainPagePresenterProtocol?
     var currentPage = 0
@@ -44,9 +46,16 @@ class MainPageViewController: UIPageViewController {
     }
     
     private func setupLayout() {
-        view.addSubview(pageControl)
+        [pageControl, loadingView].forEach { view.addSubview($0) }
         pageControl.snp.makeConstraints { make in
             make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        
+        loadingView.snp.makeConstraints { make in
+            make.leading.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
         }
@@ -77,6 +86,17 @@ extension MainPageViewController: MainPageViewProtocol {
         setViewControllers([pages[self.currentPage]],
                            direction: .forward,
                            animated: true)
+    }
+    
+    func isShowLoadingView(_ isShow: Bool) {
+        if isShow == true {
+            loadingView.isHidden = false
+        } else if isShow == false {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(2),
+                                          execute: { () -> Void in
+                self.loadingView.isHidden = true
+            })
+        }
     }
 }
 

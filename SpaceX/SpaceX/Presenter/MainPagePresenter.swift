@@ -40,12 +40,14 @@ class MainPagePresenter: MainPagePresenterProtocol {
     
     func fetchRockets() {
         network?.fetchRockets { [weak self] (result) in
+            guard let self = self else { return }
+            self.view?.isShowLoadingView(true)
             DispatchQueue.main.async {
-                guard let self = self else { return }
                 switch result {
                 case let .success(rocket):
                     self.rockets = rocket
                     self.view?.success(withNumber: self.rockets?.count ?? 0)
+                    self.view?.isShowLoadingView(false)
                 case .failure(_): break
                 }
                 return

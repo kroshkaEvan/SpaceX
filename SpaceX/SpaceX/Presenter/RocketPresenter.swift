@@ -21,6 +21,7 @@ protocol RocketPresenterProtocol: AnyObject {
                           with serialNumber: Int)
     func openLaunchVC(serialNumber: Int)
     func openSettingsVC()
+    func updateView()
 }
 
 class RocketPresenter: RocketPresenterProtocol {
@@ -47,8 +48,8 @@ class RocketPresenter: RocketPresenterProtocol {
     
     func fetchRockets() {
         network?.fetchRockets { [weak self] (result) in
+            guard let self = self else { return }
             DispatchQueue.main.async {
-                guard let self = self else { return }
                 switch result {
                 case let .success(rocket):
                     self.rockets = rocket
@@ -86,6 +87,12 @@ class RocketPresenter: RocketPresenterProtocol {
     func openSettingsVC() {
         guard let view = view as? UIViewController else { return }
         router?.presentSettingsVC(viewController: view)
+    }
+    
+    func updateView() {
+        router?.saveUserDefaults = {
+            self.view?.successSaveUserDefaults()
+        }
     }
 }
 

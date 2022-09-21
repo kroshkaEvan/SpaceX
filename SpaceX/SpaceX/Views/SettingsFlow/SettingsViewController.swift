@@ -153,7 +153,8 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
                                    segmentedItems: ["kg", "lb"])
                 cell.valueSegmentedControl.selectedSegmentIndex = presenter?.userDefaults.payload ?? 0
             default:
-                print("")
+                cell.configureCell(parameterText: "",
+                                   segmentedItems: ["", ""])
             }
         }
         return cell

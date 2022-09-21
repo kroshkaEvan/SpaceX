@@ -11,6 +11,7 @@ import SnapKit
 protocol RocketViewProtocol: AnyObject {
     func successUpload()
     func failure(error: NetworkError)
+    func successSaveUserDefaults()
 }
 
 class RocketViewController: UIViewController {
@@ -105,6 +106,12 @@ extension RocketViewController {
 }
 
 extension RocketViewController: RocketViewProtocol {
+    func successSaveUserDefaults() {
+        DispatchQueue.main.async { [weak self] in
+            self?.descriptionRocketView.rocketCollectionView.reloadData()
+        }
+    }
+    
     func successUpload() {
         descriptionRocketView.rocketName.text = presenter?.rockets?[serialNumber].name
         presenter?.fetchRocketImage(descriptionRocketView.backgroundImageView,
@@ -116,7 +123,6 @@ extension RocketViewController: RocketViewProtocol {
     func failure(error: NetworkError) {
         print(error)
     }
-
 }
 
 extension RocketViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -134,25 +140,47 @@ extension RocketViewController: UICollectionViewDataSource, UICollectionViewDele
                                                       for: indexPath)
         if let cell = cell as? RocketCollectionViewCell,
            let rocket = presenter?.rockets?[serialNumber] {
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
                 switch indexPath.row {
                 case 0:
-                    cell.configureCell(parameterText: "Height, m",
-                                       valueText: "\(rocket.height.meters ?? 0)")
+                    if self.presenter?.userDefaults.height == 0 {
+                        cell.configureCell(parameterText: "Height, m",
+                                           valueText: "\(rocket.height.meters ?? 0)")
+                    } else {
+                        cell.configureCell(parameterText: "Height, ft",
+                                           valueText: "\(rocket.height.feet ?? 0)")
+                    }
                 case 1:
-                    cell.configureCell(parameterText: "Diameter, m",
-                                       valueText: "\(rocket.diameter.meters ?? 0)")
+                    if self.presenter?.userDefaults.diameter == 0 {
+                        cell.configureCell(parameterText: "Diameter, m",
+                                           valueText: "\(rocket.diameter.meters ?? 0)")
+                    } else {
+                        cell.configureCell(parameterText: "Diameter, ft",
+                                           valueText: "\(rocket.diameter.feet ?? 0)")
+                    }
                 case 2:
-                    cell.configureCell(parameterText: "Mass, kg",
-                                       valueText: "\(rocket.mass.kg)")
+                    if self.presenter?.userDefaults.mass == 0 {
+                        cell.configureCell(parameterText: "Mass, kg",
+                                           valueText: "\(rocket.mass.kg)")
+                    } else {
+                        cell.configureCell(parameterText: "Mass, lb",
+                                           valueText: "\(rocket.mass.lb)")
+                    }
                 case 3:
-                    cell.configureCell(parameterText: "Payload, kg",
-                                       valueText: "\(rocket.payloadWeights.first?.kg ?? 0)")
+                    if self.presenter?.userDefaults.payload == 0 {
+                        cell.configureCell(parameterText: "Payload, kg",
+                                           valueText: "\(rocket.payloadWeights.first?.kg ?? 0)")
+                    } else {
+                        cell.configureCell(parameterText: "Payload, lb",
+                                           valueText: "\(rocket.payloadWeights.first?.lb ?? 0)")
+                    }
                 default:
                     cell.configureCell(parameterText: "",
                                        valueText: "")
                 }
             }
+            self.presenter?.updateView()
         }
         return cell
     }

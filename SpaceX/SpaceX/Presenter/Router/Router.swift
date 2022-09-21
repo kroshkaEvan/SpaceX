@@ -13,6 +13,7 @@ protocol RouterRocket {
 }
 
 protocol RouterProtocol {
+    var saveUserDefaults: (() -> Void)? { get set }
     func initViewController()
     func pushLaunchVC(viewController: UIViewController,
                       typeRocket: String,
@@ -24,6 +25,7 @@ protocol RouterProtocol {
 class Router: RouterRocket {
     var navigationController: UINavigationController?
     var assemblyBuilder: AssemblyBuilderProtocol?
+    var saveUserDefaults: (() -> Void)?
     
     // MARK: - Initializater
     
@@ -60,7 +62,8 @@ extension Router: RouterProtocol {
     }
     
     func dismissSettingsVC(viewController: UIViewController) {
-        viewController.dismiss(animated: true)
+        viewController.dismiss(animated: true,
+                               completion: saveUserDefaults)
     }
     
 }
