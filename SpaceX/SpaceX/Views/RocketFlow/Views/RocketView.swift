@@ -93,6 +93,8 @@ class RocketView: UIView {
         return button
     }()
     
+    lazy var height: CGFloat = UIScreen.main.bounds.height
+    
     // MARK: - Initializers
     
     override init(frame: CGRect) {
@@ -111,24 +113,24 @@ class RocketView: UIView {
          rocketName, settingsButton,
          rocketCollectionView, rocketTableView,
          watchRocketLaunchesButton].forEach( {addSubview($0)} )
-        
+
         backgroundImageView.snp.makeConstraints { make in
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
             make.top.equalToSuperview()
-            make.height.equalTo(400)
+            make.height.equalToSuperview().multipliedBy(0.25)
         }
         
         contentView.snp.makeConstraints { make in
             make.leading.equalToSuperview()
-            make.top.equalTo(backgroundImageView.snp.bottom).offset(-20)
+            make.top.equalToSuperview().offset(height * 0.3)
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
         }
         
         rocketName.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(32)
-            make.top.equalTo(backgroundImageView.snp.bottom).offset(20)
+            make.top.equalTo(contentView.snp.top).offset(20)
         }
         
         settingsButton.snp.makeConstraints { make in
@@ -149,7 +151,7 @@ class RocketView: UIView {
             make.leading.equalToSuperview().offset(32)
             make.trailing.equalToSuperview().offset(-32)
             make.top.equalTo(rocketCollectionView.snp.bottom)
-            make.height.equalTo(514)
+            make.height.equalTo(520)
         }
         
         watchRocketLaunchesButton.snp.makeConstraints { make in

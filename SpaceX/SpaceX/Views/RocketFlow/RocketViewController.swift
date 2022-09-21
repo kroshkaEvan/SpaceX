@@ -22,7 +22,6 @@ class RocketViewController: UIViewController {
         let view = UIScrollView(frame: .zero)
         view.contentInsetAdjustmentBehavior = .never
         view.showsVerticalScrollIndicator = false
-        view.isPagingEnabled = true
         return view
     }()
     
@@ -82,7 +81,7 @@ class RocketViewController: UIViewController {
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
             make.centerX.equalToSuperview()
-            make.height.greaterThanOrEqualTo(1280)
+            make.height.greaterThanOrEqualTo(1120)
         }
     }
     
@@ -229,26 +228,26 @@ extension RocketViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView(frame: CGRect(x: 0,
                                               y: 0,
-                                              width: tableView.frame.width,
+                                              width: tableView.frame.size.width,
                                               height: 40))
         let label = UILabel()
         label.frame = CGRect(x: 0,
                              y: 0,
-                             width: headerView.frame.width,
-                             height: headerView.frame.height)
+                             width: headerView.frame.size.width,
+                             height: headerView.frame.size.height)
         label.font = .systemFont(ofSize: 16,
                                  weight: .semibold)
         label.textColor = .white
         
         switch section {
         case 0:
-            label.text = nil
+            label.text = ""
         case 1:
             label.text = "FIRST STAGE"
         case 2:
             label.text = "SECOND STAGE"
         default:
-            label.text = nil
+            label.text = ""
         }
         headerView.addSubview(label)
         return headerView
@@ -317,5 +316,15 @@ extension RocketViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 40
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView()
+        footerView.backgroundColor = UIColor.clear
+        return footerView
     }
 }
