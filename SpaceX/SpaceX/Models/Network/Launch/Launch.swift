@@ -16,6 +16,24 @@ struct Launch: Codable {
         case rocket, name, success
         case dateLocal = "date_local"
     }
+    
+    var date: String {
+        reformat(inputDate: dateLocal )
+    }
+    
+    private func reformat(inputDate: String) -> String {
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        if let date = inputFormatter.date(from: inputDate) {
+            let outputFormatter = DateFormatter()
+            outputFormatter.locale = Locale(identifier: "en_US_POSIX")
+            outputFormatter.dateStyle = .medium
+            let outputDate = outputFormatter.string(from: date)
+            return outputDate
+        } else {
+            return inputDate
+        }
+    }
 }
 
 enum TypeRocket: String, Codable {
