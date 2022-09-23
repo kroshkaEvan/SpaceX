@@ -49,11 +49,13 @@ class RocketPresenter: RocketPresenterProtocol {
     func fetchRockets() {
         network?.fetchRockets { [weak self] (result) in
             guard let self = self else { return }
+            self.view?.isShowLoadingView(true)
             DispatchQueue.main.async {
                 switch result {
                 case let .success(rocket):
                     self.rockets = rocket
                     self.view?.successUpload()
+                    self.view?.isShowLoadingView(false)
                 case let .failure(error):
                     self.view?.failure(error: error)
                 }

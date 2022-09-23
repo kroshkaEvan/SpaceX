@@ -21,7 +21,6 @@ protocol LaunchPresenterProtocol: AnyObject {
     func fetchLaunchesData()
     func getLaunchesDataToCell(indexPath: Int,
                                complition: @escaping(String?, String?, String?) -> Void)
-    
 }
 
 class LaunchPresenter: LaunchPresenterProtocol {

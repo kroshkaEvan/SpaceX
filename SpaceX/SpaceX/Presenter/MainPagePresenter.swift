@@ -48,7 +48,8 @@ class MainPagePresenter: MainPagePresenterProtocol {
                     self.rockets = rocket
                     self.view?.success(withNumber: self.rockets?.count ?? 0)
                     self.view?.isShowLoadingView(false)
-                case .failure(_): break
+                case let .failure(error):
+                    self.view?.failure(error: error)
                 }
                 return
             }

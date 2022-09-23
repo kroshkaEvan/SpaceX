@@ -12,6 +12,20 @@ class RocketView: UIView {
     
     // MARK: - Properties
     
+    private lazy var scrollView: UIScrollView = {
+        let view = UIScrollView(frame: .zero)
+        view.contentInsetAdjustmentBehavior = .never
+        view.showsVerticalScrollIndicator = false
+        return view
+    }()
+    
+    private lazy var descriptionRocketView: UIView = {
+        let view = UIView(frame: .zero)
+        view.backgroundColor = .black
+        view.layer.cornerRadius = 30
+        return view
+    }()
+    
     private lazy var contentView: UIView = {
         let view = UIView(frame: .zero)
         view.backgroundColor = .black
@@ -109,10 +123,28 @@ class RocketView: UIView {
     // MARK: - Private Methods
     
     private func setupRocketViewLayout() {
+        addSubview(scrollView)
+        scrollView.addSubview(descriptionRocketView)
         [backgroundImageView, contentView,
          rocketName, settingsButton,
          rocketCollectionView, rocketTableView,
-         watchRocketLaunchesButton].forEach( {addSubview($0)} )
+         watchRocketLaunchesButton].forEach( {descriptionRocketView.addSubview($0)} )
+        
+        scrollView.snp.makeConstraints { make in
+            make.leading.equalToSuperview()
+            make.top.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        
+        descriptionRocketView.snp.makeConstraints { make in
+            make.leading.equalToSuperview()
+            make.top.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.height.greaterThanOrEqualTo(1120)
+        }
 
         backgroundImageView.snp.makeConstraints { make in
             make.leading.equalToSuperview()
@@ -130,7 +162,7 @@ class RocketView: UIView {
         
         rocketName.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(32)
-            make.top.equalTo(contentView.snp.top).offset(20)
+            make.top.equalTo(contentView.snp.top).offset(30)
         }
         
         settingsButton.snp.makeConstraints { make in
@@ -157,7 +189,7 @@ class RocketView: UIView {
         watchRocketLaunchesButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(32)
             make.trailing.equalToSuperview().offset(-32)
-            make.top.equalTo(rocketTableView.snp.bottom).offset(30)
+            make.top.equalTo(rocketTableView.snp.bottom).offset(10)
             make.height.equalTo(50)
         }
     }

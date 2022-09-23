@@ -12,20 +12,19 @@ protocol RocketViewProtocol: AnyObject {
     func successUpload()
     func failure(error: NetworkError)
     func successSaveUserDefaults()
+    func isShowLoadingView(_ isShow: Bool)
 }
 
 class RocketViewController: UIViewController {
     
     // MARK: - Private properties
     
-    private lazy var scrollView: UIScrollView = {
-        let view = UIScrollView(frame: .zero)
-        view.contentInsetAdjustmentBehavior = .never
-        view.showsVerticalScrollIndicator = false
-        return view
-    }()
+    private var descriptionRocketView: RocketView? {
+        guard isViewLoaded else { return nil }
+        return view as? RocketView
+    }
     
-    private var descriptionRocketView = RocketView()
+    private lazy var loadingView = LoadingView()
     
     // MARK: - Public properties
     
@@ -34,7 +33,7 @@ class RocketViewController: UIViewController {
     var serialNumber: Int
     
     // MARK: - Initializers
-
+    
     init(serialNumber: Int) {
         self.serialNumber = serialNumber
         super.init(nibName: nil, bundle: nil)
@@ -54,7 +53,7 @@ class RocketViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureNavigation()
-        descriptionRocketView.rocketCollectionView.reloadData()
+        successUpload()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -63,25 +62,13 @@ class RocketViewController: UIViewController {
     }
     
     // MARK: - Private Methods
-
+    
     private func setupLayout() {
-        view.addSubview(scrollView)
-        scrollView.addSubview(descriptionRocketView)
-        
-        scrollView.snp.makeConstraints { make in
-            make.leading.equalToSuperview()
-            make.top.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
-        }
-        
-        descriptionRocketView.snp.makeConstraints { make in
-            make.leading.equalToSuperview()
-            make.top.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
-            make.centerX.equalToSuperview()
-            make.height.greaterThanOrEqualTo(1120)
+        view = RocketView()
+        view.backgroundColor = .black
+        view.addSubview(loadingView)
+        loadingView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
     
@@ -92,19 +79,19 @@ class RocketViewController: UIViewController {
     }
     
     private func setupView() {
-        descriptionRocketView.rocketCollectionView.dataSource = self
-        descriptionRocketView.rocketCollectionView.delegate = self
-        descriptionRocketView.rocketTableView.dataSource = self
-        descriptionRocketView.rocketTableView.delegate = self
+        descriptionRocketView?.rocketCollectionView.dataSource = self
+        descriptionRocketView?.rocketCollectionView.delegate = self
+        descriptionRocketView?.rocketTableView.dataSource = self
+        descriptionRocketView?.rocketTableView.delegate = self
     }
     
     private func setupActions() {
-        descriptionRocketView.watchRocketLaunchesButton.addTarget(self,
-                                                                  action: #selector(didTapLaunches),
-                                                                  for: .touchUpInside)
-        descriptionRocketView.settingsButton.addTarget(self,
-                                                       action: #selector(didTapSettings),
-                                                       for: .touchUpInside)
+        descriptionRocketView?.watchRocketLaunchesButton.addTarget(self,
+                                                                   action: #selector(didTapLaunches),
+                                                                   for: .touchUpInside)
+        descriptionRocketView?.settingsButton.addTarget(self,
+                                                        action: #selector(didTapSettings),
+                                                        for: .touchUpInside)
     }
 }
 
@@ -125,20 +112,44 @@ extension RocketViewController {
 extension RocketViewController: RocketViewProtocol {
     func successSaveUserDefaults() {
         DispatchQueue.main.async { [weak self] in
-            self?.descriptionRocketView.rocketCollectionView.reloadData()
+            self?.descriptionRocketView?.rocketCollectionView.reloadData()
         }
     }
     
     func successUpload() {
-        descriptionRocketView.rocketName.text = presenter?.rockets?[serialNumber].name
-        presenter?.fetchRocketImage(descriptionRocketView.backgroundImageView,
+        descriptionRocketView?.rocketName.text = presenter?.rockets?[serialNumber].name
+        presenter?.fetchRocketImage(descriptionRocketView?.backgroundImageView ?? UIImageView(),
                                     with: serialNumber)
-        descriptionRocketView.rocketCollectionView.reloadData()
-        descriptionRocketView.rocketTableView.reloadData()
+        descriptionRocketView?.rocketCollectionView.reloadData()
+        descriptionRocketView?.rocketTableView.reloadData()
     }
     
     func failure(error: NetworkError) {
+        let message = "\(error.localizedDescription) \nRestart"
+        let action = UIAlertAction(title: "OK",
+                                   style: .default,
+                                   handler: (restart))
+        let alertLogOut = UIAlertController(title: "Oops!",
+                                            message: message,
+                                            preferredStyle: .alert)
+        alertLogOut.addAction(action)
+        present(alertLogOut, animated: true)
         print(error)
+    }
+    
+    func restart(action: UIAlertAction) {
+        presenter?.fetchRockets()
+    }
+    
+    func isShowLoadingView(_ isShow: Bool) {
+        if isShow == true {
+            loadingView.isHidden = false
+        } else if isShow == false {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1),
+                                          execute: { () -> Void in
+                self.loadingView.isHidden = true
+            })
+        }
     }
 }
 
@@ -273,7 +284,7 @@ extension RocketViewController: UITableViewDataSource, UITableViewDelegate {
                                            valueText: "\(rocket.costPerLaunch) $")
                     default:
                         cell.configureCell(parameterText: "",
-                                                valueText: "")
+                                           valueText: "")
                     }
                 case 1:
                     switch indexPath.row {

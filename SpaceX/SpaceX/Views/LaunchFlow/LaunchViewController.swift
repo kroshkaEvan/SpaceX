@@ -113,10 +113,31 @@ extension LaunchViewController: LaunchViewProtocol {
     }
     
     func successNil() {
-        print("launch nil")
+        let message = "Launches are classified"
+        let action = UIAlertAction(title: "OK",
+                                   style: .default,
+                                   handler: nil)
+        let alertLogOut = UIAlertController(title: "Oops!",
+                                            message: message,
+                                            preferredStyle: .alert)
+        alertLogOut.addAction(action)
+        present(alertLogOut, animated: true)
     }
     
     func failure(error: NetworkError) {
+        let message = "\(error.localizedDescription) \nRestart"
+        let action = UIAlertAction(title: "OK",
+                                   style: .default,
+                                   handler: (restart))
+        let alertLogOut = UIAlertController(title: "Oops!",
+                                            message: message,
+                                            preferredStyle: .alert)
+        alertLogOut.addAction(action)
+        present(alertLogOut, animated: true)
         print(error)
+    }
+    
+    func restart(action: UIAlertAction) {
+        presenter?.fetchLaunchesData()
     }
 }

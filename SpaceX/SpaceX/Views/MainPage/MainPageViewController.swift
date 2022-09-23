@@ -10,6 +10,7 @@ import SnapKit
 
 protocol MainPageViewProtocol: AnyObject {
     func success(withNumber number: Int)
+    func failure(error: NetworkError)
     func isShowLoadingView(_ isShow: Bool)
 }
 
@@ -62,10 +63,7 @@ class MainPageViewController: UIPageViewController {
         }
         
         loadingView.snp.makeConstraints { make in
-            make.leading.equalToSuperview()
-            make.top.equalTo(view.snp.top)
-            make.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
         }
     }
     
@@ -100,11 +98,28 @@ extension MainPageViewController: MainPageViewProtocol {
                            animated: true)
     }
     
+    func failure(error: NetworkError) {
+        let message = "\(error.localizedDescription) \nRestart"
+        let action = UIAlertAction(title: "OK",
+                                   style: .default,
+                                   handler: (restart))
+        let alertLogOut = UIAlertController(title: "Oops!",
+                                            message: message,
+                                            preferredStyle: .alert)
+        alertLogOut.addAction(action)
+        present(alertLogOut, animated: true)
+        print(error)
+    }
+    
+    func restart(action: UIAlertAction) {
+        presenter?.fetchRockets()
+    }
+    
     func isShowLoadingView(_ isShow: Bool) {
         if isShow == true {
             loadingView.isHidden = false
         } else if isShow == false {
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(2),
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1),
                                           execute: { () -> Void in
                 self.loadingView.isHidden = true
             })
