@@ -1,6 +1,7 @@
 # SpaceX
 ## SpaceX API
-> - [Rockets](https://api.spacexdata.com/v4/rockets) | [Launches] - https://api.spacexdata.com/v4/launches
+> - [Rockets](https://api.spacexdata.com/v4/rockets) | 
+> - [Launches](https://api.spacexdata.com/v4/launches)
 > - [SpaceX Docs](https://github.com/r-spacex/SpaceX-API/blob/master/docs/queries.md)
 
 ![Снимок экрана 2022-09-23 в 14 36 37](https://user-images.githubusercontent.com/95620294/191952215-b70528fb-6b8c-4838-a2c3-1ced210e932d.png)
