@@ -82,7 +82,7 @@
 		BCDC2E8028CF3C4900309078 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		BCDC2E8228CF3E9800309078 /* RocketPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketPresenter.swift; sourceTree = "<group>"; };
 		BCDC2E8528CF3FB800309078 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		BCDC2E8728CF400600309078 /* AssemblyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyBuilder.swift; sourceTree = "<group>"; };
+		BCDC2E8728CF400600309078 /* AssemblyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssemblyBuilder.swift; path = Router/AssemblyBuilder.swift; sourceTree = "<group>"; };
 		BCDC2E8928CF482500309078 /* MainPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPagePresenter.swift; sourceTree = "<group>"; };
 		BCDC2E9128D0D2D700309078 /* LaunchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,32 +101,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BC0AB12F28CDB84C008556AE /* SettingsFlow */ = {
+		BC0AB12F28CDB84C008556AE /* SettingsModule */ = {
 			isa = PBXGroup;
 			children = (
+				BC6277E928D338D600F5E133 /* SettingsPresenter.swift */,
 				BC0AB13028CDBBD4008556AE /* SettingsViewController.swift */,
 				BC0AB13228CDBE5B008556AE /* SettingsCollectionViewCell.swift */,
 			);
-			path = SettingsFlow;
+			path = SettingsModule;
 			sourceTree = "<group>";
 		};
-		BC0AB13428CDE65D008556AE /* LaunchFlow */ = {
+		BC0AB13428CDE65D008556AE /* LaunchModule */ = {
 			isa = PBXGroup;
 			children = (
+				BCDC2E9128D0D2D700309078 /* LaunchPresenter.swift */,
 				BC0AB13528CDE679008556AE /* LaunchViewController.swift */,
 				BC0AB13728CDE730008556AE /* LaunchCollectionViewCell.swift */,
 			);
-			path = LaunchFlow;
+			path = LaunchModule;
 			sourceTree = "<group>";
 		};
-		BC6277EB28D377B700F5E133 /* UserDefaults */ = {
+		BC6277EB28D377B700F5E133 /* UserDefaultsModule */ = {
 			isa = PBXGroup;
 			children = (
 				BC6277EC28D377C700F5E133 /* UserDefaults.swift */,
 				BC6277EE28D377EA00F5E133 /* UserDefaultKey.swift */,
 				BC6277F028D3780E00F5E133 /* UserDefaultsStorage.swift */,
 			);
-			path = UserDefaults;
+			path = UserDefaultsModule;
+			sourceTree = "<group>";
+		};
+		BC82740F28FBCB1F0009C0AC /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				BC84B5D628BD169900D877CC /* AppDelegate.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 		BC84B5CA28BD169800D877CC = {
@@ -148,22 +158,15 @@
 		BC84B5D528BD169800D877CC /* SpaceX */ = {
 			isa = PBXGroup;
 			children = (
-				BC84B5F528BD3F1900D877CC /* Models */,
-				BC84B61F28BF4E8000D877CC /* Presenter */,
+				BC82740F28FBCB1F0009C0AC /* Application */,
+				BC84B60728BD432500D877CC /* NetworkModule */,
+				BC6277EB28D377B700F5E133 /* UserDefaultsModule */,
+				BC84B61F28BF4E8000D877CC /* RouterModule */,
 				BC84B61C28BF4E4500D877CC /* Views */,
 				BC84B61E28BF4E5C00D877CC /* SupportFiles */,
 				BC84B5E428BD16A000D877CC /* Info.plist */,
 			);
 			path = SpaceX;
-			sourceTree = "<group>";
-		};
-		BC84B5F528BD3F1900D877CC /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				BC6277EB28D377B700F5E133 /* UserDefaults */,
-				BC84B60728BD432500D877CC /* Network */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		BC84B5F828BD40BD00D877CC /* Rocket */ = {
@@ -181,7 +184,7 @@
 			path = Rocket;
 			sourceTree = "<group>";
 		};
-		BC84B60728BD432500D877CC /* Network */ = {
+		BC84B60728BD432500D877CC /* NetworkModule */ = {
 			isa = PBXGroup;
 			children = (
 				BC84B61928BF474A00D877CC /* Launch */,
@@ -190,7 +193,7 @@
 				BC84B60A28BD47CB00D877CC /* NetworkError.swift */,
 				BC84B61728BF46F100D877CC /* API.swift */,
 			);
-			path = Network;
+			path = NetworkModule;
 			sourceTree = "<group>";
 		};
 		BC84B61928BF474A00D877CC /* Launch */ = {
@@ -204,29 +207,29 @@
 		BC84B61C28BF4E4500D877CC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				BCDC2E7F28CF3C2700309078 /* MainPage */,
-				BC0AB13428CDE65D008556AE /* LaunchFlow */,
-				BC0AB12F28CDB84C008556AE /* SettingsFlow */,
-				BC84B61D28BF4E4E00D877CC /* RocketFlow */,
+				BCDC2E7F28CF3C2700309078 /* MainPageModule */,
+				BC0AB13428CDE65D008556AE /* LaunchModule */,
+				BC0AB12F28CDB84C008556AE /* SettingsModule */,
+				BC84B61D28BF4E4E00D877CC /* RocketModule */,
 				BCA63AEC28DB1A8E007813F1 /* LoadingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		BC84B61D28BF4E4E00D877CC /* RocketFlow */ = {
+		BC84B61D28BF4E4E00D877CC /* RocketModule */ = {
 			isa = PBXGroup;
 			children = (
+				BCDC2E8228CF3E9800309078 /* RocketPresenter.swift */,
+				BC84B5DA28BD169900D877CC /* RocketViewController.swift */,
 				BC84B62128BF5B2000D877CC /* Cells */,
 				BC84B62028BF5B1600D877CC /* Views */,
-				BC84B5DA28BD169900D877CC /* RocketViewController.swift */,
 			);
-			path = RocketFlow;
+			path = RocketModule;
 			sourceTree = "<group>";
 		};
 		BC84B61E28BF4E5C00D877CC /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
-				BC84B5D628BD169900D877CC /* AppDelegate.swift */,
 				BC84B5DF28BD16A000D877CC /* Assets.xcassets */,
 				BC84B5E128BD16A000D877CC /* LaunchScreen.storyboard */,
 				BCA63AEE28DB3A5E007813F1 /* Extension UILabel.swift */,
@@ -234,16 +237,13 @@
 			path = SupportFiles;
 			sourceTree = "<group>";
 		};
-		BC84B61F28BF4E8000D877CC /* Presenter */ = {
+		BC84B61F28BF4E8000D877CC /* RouterModule */ = {
 			isa = PBXGroup;
 			children = (
-				BCDC2E8428CF3FA200309078 /* Router */,
-				BCDC2E8228CF3E9800309078 /* RocketPresenter.swift */,
-				BCDC2E8928CF482500309078 /* MainPagePresenter.swift */,
-				BCDC2E9128D0D2D700309078 /* LaunchPresenter.swift */,
-				BC6277E928D338D600F5E133 /* SettingsPresenter.swift */,
+				BCDC2E8528CF3FB800309078 /* Router.swift */,
+				BCDC2E8728CF400600309078 /* AssemblyBuilder.swift */,
 			);
-			path = Presenter;
+			path = RouterModule;
 			sourceTree = "<group>";
 		};
 		BC84B62028BF5B1600D877CC /* Views */ = {
@@ -263,21 +263,13 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		BCDC2E7F28CF3C2700309078 /* MainPage */ = {
+		BCDC2E7F28CF3C2700309078 /* MainPageModule */ = {
 			isa = PBXGroup;
 			children = (
+				BCDC2E8928CF482500309078 /* MainPagePresenter.swift */,
 				BCDC2E8028CF3C4900309078 /* MainPageViewController.swift */,
 			);
-			path = MainPage;
-			sourceTree = "<group>";
-		};
-		BCDC2E8428CF3FA200309078 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				BCDC2E8528CF3FB800309078 /* Router.swift */,
-				BCDC2E8728CF400600309078 /* AssemblyBuilder.swift */,
-			);
-			path = Router;
+			path = MainPageModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

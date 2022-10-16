@@ -41,7 +41,7 @@ class LaunchViewController: UIViewController {
     
     var presenter: LaunchPresenterProtocol?
     
-    // MARK: - Initializers
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()

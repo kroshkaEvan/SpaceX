@@ -32,8 +32,8 @@ class RocketViewController: UIViewController {
     let networkManager = NetworkManager()
     var serialNumber: Int
     
-    // MARK: - Initializers
-    
+    // MARK: - Lifecycle
+
     init(serialNumber: Int) {
         self.serialNumber = serialNumber
         super.init(nibName: nil, bundle: nil)

@@ -26,7 +26,8 @@ class AssemblyBuilder: AssemblyBuilderProtocol {
                                           options: nil)
         let presenter = MainPagePresenter(view: view,
                                           network: networkManager,
-                                          router: router)
+                                          router: router,
+                                          assemblyBuilder: self)
         view.presenter = presenter
         return view
     }

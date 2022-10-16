@@ -9,7 +9,8 @@ import UIKit
 import SnapKit
 
 protocol MainPageViewProtocol: AnyObject {
-    func success(withNumber number: Int)
+    var pages: [UIViewController] {get set}
+    func successUpload()
     func failure(error: NetworkError)
     func isShowLoadingView(_ isShow: Bool)
 }
@@ -18,8 +19,6 @@ class MainPageViewController: UIPageViewController {
     
     // MARK: - Private properties
     
-    private lazy var pages: [UIViewController] = []
-    private lazy var assemblyBuilder = AssemblyBuilder()
     private lazy var loadingView = LoadingView()
 
     private lazy var pageControl: UIPageControl = {
@@ -36,10 +35,11 @@ class MainPageViewController: UIPageViewController {
     
     // MARK: - Public properties
     
+    var pages: [UIViewController] = []
     var presenter: MainPagePresenterProtocol?
     var currentPage = 0
         
-    // MARK: - Initializers
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,20 +79,10 @@ class MainPageViewController: UIPageViewController {
 // MARK: - MainPageViewProtocol
 
 extension MainPageViewController: MainPageViewProtocol {
-    func success(withNumber number: Int) {
-        let router = Router(navigationController: UINavigationController(),
-                            assemblyBuilder: assemblyBuilder)
-        guard let rockets = presenter?.rockets?.count else { return }
-        
-        for serialNumber in 0..<rockets {
-            let viewController = assemblyBuilder.setRocketModule(router: router,
-                                                                 with: serialNumber)
-            pages.append(viewController)
-        }
-        
+    func successUpload() {
+        presenter?.setPages()
         pageControl.currentPage = currentPage
         pageControl.numberOfPages = pages.count
-        
         setViewControllers([pages[self.currentPage]],
                            direction: .forward,
                            animated: true)

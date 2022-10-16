@@ -11,10 +11,12 @@ import UIKit
 protocol MainPagePresenterProtocol: AnyObject {
     init(view: MainPageViewProtocol,
          network: NetworkProtocol,
-         router: RouterProtocol)
+         router: RouterProtocol,
+         assemblyBuilder: AssemblyBuilderProtocol)
     
     var rockets: [Rocket]? { get set }
     func fetchRockets()
+    func setPages()
 }
 
 class MainPagePresenter: MainPagePresenterProtocol {
@@ -23,16 +25,19 @@ class MainPagePresenter: MainPagePresenterProtocol {
     let view: MainPageViewProtocol?
     let network: NetworkProtocol?
     let router: RouterProtocol?
+    let assemblyBuilder: AssemblyBuilderProtocol?
     var rockets: [Rocket]?
     
     // MARK: - Initializater
     
     required init(view: MainPageViewProtocol,
                   network: NetworkProtocol,
-                  router: RouterProtocol) {
+                  router: RouterProtocol,
+                  assemblyBuilder: AssemblyBuilderProtocol) {
         self.view = view
         self.network = network
         self.router = router
+        self.assemblyBuilder = assemblyBuilder
         fetchRockets()
     }
     
@@ -46,13 +51,24 @@ class MainPagePresenter: MainPagePresenterProtocol {
                 switch result {
                 case let .success(rocket):
                     self.rockets = rocket
-                    self.view?.success(withNumber: self.rockets?.count ?? 0)
+                    self.view?.successUpload()
                     self.view?.isShowLoadingView(false)
                 case let .failure(error):
                     self.view?.failure(error: error)
                 }
                 return
             }
+        }
+    }
+    
+    func setPages() {
+        guard let rockets = rockets?.count,
+              let router = router as? Router,
+              let assemblyBuilder = assemblyBuilder else { return }
+        for serialNumber in 0..<rockets {
+            let viewController = assemblyBuilder.setRocketModule(router: router,
+                                                                 with: serialNumber)
+            view?.pages.append(viewController)
         }
     }
 }
