@@ -13,7 +13,6 @@
 ## Technology stack
 > - MVP architecture with Router and Assembly
 > - UIKit
-> - Core Data
 > - Alamofire 
 > - SnapKit
 > - Nuke
