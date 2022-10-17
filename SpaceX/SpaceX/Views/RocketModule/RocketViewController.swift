@@ -48,12 +48,13 @@ class RocketViewController: UIViewController {
         setupLayout()
         setupView()
         setupActions()
+        successUpload()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureNavigation()
-        successUpload()
+        reloadView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -93,6 +94,11 @@ class RocketViewController: UIViewController {
                                                         action: #selector(didTapSettings),
                                                         for: .touchUpInside)
     }
+    
+    private func reloadView() {
+        descriptionRocketView?.rocketCollectionView.reloadData()
+        descriptionRocketView?.rocketTableView.reloadData()
+    }
 }
 
 // MARK: - Objc Methods
@@ -112,7 +118,7 @@ extension RocketViewController {
 extension RocketViewController: RocketViewProtocol {
     func successSaveUserDefaults() {
         DispatchQueue.main.async { [weak self] in
-            self?.descriptionRocketView?.rocketCollectionView.reloadData()
+            self?.reloadView()
         }
     }
     
@@ -120,8 +126,6 @@ extension RocketViewController: RocketViewProtocol {
         descriptionRocketView?.rocketName.text = presenter?.rockets?[serialNumber].name
         presenter?.fetchRocketImage(descriptionRocketView?.backgroundImageView ?? UIImageView(),
                                     with: serialNumber)
-        descriptionRocketView?.rocketCollectionView.reloadData()
-        descriptionRocketView?.rocketTableView.reloadData()
     }
     
     func failure(error: NetworkError) {
